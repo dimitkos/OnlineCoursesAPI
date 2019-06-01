@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2043
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCourses", "OnlineCourses\OnlineCourses.csproj", "{6099BF2C-3F95-42E4-8E99-6CD64EC46701}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{41A2D07A-8BC7-4C15-8B5B-34A4E6513F10}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{4AEA8E2F-AB9F-4785-BD2F-BD08F0A645EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCourses.Implementation", "OnlineCourses.Implementation\OnlineCourses.Implementation.csproj", "{81C3FE3D-8613-4523-98A3-7927C4C53A83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCourses.Controllers", "OnlineCourses.Controllers\OnlineCourses.Controllers.csproj", "{4DB048B0-E724-4E7B-BD4A-F167BE3873C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCourses.Types", "OnlineCourses.Types\OnlineCourses.Types.csproj", "{5828B9D9-9AA5-4358-91AC-5F07E6825370}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCourses.Interfaces", "OnlineCourses.Interfaces\OnlineCourses.Interfaces.csproj", "{0532C1C2-6083-48D9-84EC-E8E0EF07D5C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{FDB1B4AC-C5D6-467D-A505-FCFF93FE9F71}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6099BF2C-3F95-42E4-8E99-6CD64EC46701}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6099BF2C-3F95-42E4-8E99-6CD64EC46701}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6099BF2C-3F95-42E4-8E99-6CD64EC46701}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6099BF2C-3F95-42E4-8E99-6CD64EC46701}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81C3FE3D-8613-4523-98A3-7927C4C53A83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81C3FE3D-8613-4523-98A3-7927C4C53A83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81C3FE3D-8613-4523-98A3-7927C4C53A83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81C3FE3D-8613-4523-98A3-7927C4C53A83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DB048B0-E724-4E7B-BD4A-F167BE3873C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DB048B0-E724-4E7B-BD4A-F167BE3873C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DB048B0-E724-4E7B-BD4A-F167BE3873C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DB048B0-E724-4E7B-BD4A-F167BE3873C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5828B9D9-9AA5-4358-91AC-5F07E6825370}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5828B9D9-9AA5-4358-91AC-5F07E6825370}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5828B9D9-9AA5-4358-91AC-5F07E6825370}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5828B9D9-9AA5-4358-91AC-5F07E6825370}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0532C1C2-6083-48D9-84EC-E8E0EF07D5C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0532C1C2-6083-48D9-84EC-E8E0EF07D5C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0532C1C2-6083-48D9-84EC-E8E0EF07D5C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0532C1C2-6083-48D9-84EC-E8E0EF07D5C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDB1B4AC-C5D6-467D-A505-FCFF93FE9F71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDB1B4AC-C5D6-467D-A505-FCFF93FE9F71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDB1B4AC-C5D6-467D-A505-FCFF93FE9F71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDB1B4AC-C5D6-467D-A505-FCFF93FE9F71}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{81C3FE3D-8613-4523-98A3-7927C4C53A83} = {41A2D07A-8BC7-4C15-8B5B-34A4E6513F10}
+		{4DB048B0-E724-4E7B-BD4A-F167BE3873C5} = {41A2D07A-8BC7-4C15-8B5B-34A4E6513F10}
+		{5828B9D9-9AA5-4358-91AC-5F07E6825370} = {41A2D07A-8BC7-4C15-8B5B-34A4E6513F10}
+		{0532C1C2-6083-48D9-84EC-E8E0EF07D5C4} = {41A2D07A-8BC7-4C15-8B5B-34A4E6513F10}
+		{FDB1B4AC-C5D6-467D-A505-FCFF93FE9F71} = {4AEA8E2F-AB9F-4785-BD2F-BD08F0A645EC}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7196490A-D668-4C04-AB0B-510CCE3C8EA7}
+	EndGlobalSection
+EndGlobal
