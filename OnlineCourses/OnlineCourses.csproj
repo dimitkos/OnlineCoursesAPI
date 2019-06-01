@@ -105,7 +105,20 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\OnlineCourses.Controllers\OnlineCourses.Controllers.csproj">
+      <Project>{4db048b0-e724-4e7b-bd4a-f167be3873c5}</Project>
+      <Name>OnlineCourses.Controllers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineCourses.Implementation\OnlineCourses.Implementation.csproj">
+      <Project>{81C3FE3D-8613-4523-98A3-7927C4C53A83}</Project>
+      <Name>OnlineCourses.Implementation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineCourses.Interfaces\OnlineCourses.Interfaces.csproj">
+      <Project>{0532C1C2-6083-48D9-84EC-E8E0EF07D5C4}</Project>
+      <Name>OnlineCourses.Interfaces</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

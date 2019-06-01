@@ -8,5 +8,6 @@ namespace OnlineCourses.Interfaces
 {
     public interface IService
     {
+        List<string> GetAllUsers();
     }
 }
