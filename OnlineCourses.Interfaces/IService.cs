@@ -1,4 +1,5 @@
-﻿using OnlineCourses.Types.Responses;
+﻿using OnlineCourses.Types.DbTypes;
+using OnlineCourses.Types.Responses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,7 @@ namespace OnlineCourses.Interfaces
     public interface IService
     {
         GetUsersResponse GetUsers();
+
+        Users GetUserById(int userId);
     }
 }

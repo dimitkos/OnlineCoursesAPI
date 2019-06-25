@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OnlineCourses.Implementation;
 using System.Linq;
+using OnlineCourses.Implementation.DataBaseImplementation;
 
 namespace UnitTests
 {
@@ -9,13 +10,36 @@ namespace UnitTests
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod1()
+        public void GetUsers()
         {
-            var service = new DbImplementation();
+            var service = new OnCoursesImplementation();
 
             var res = service.GetUsers();
 
             Xunit.Assert.True(res.Users.ToList().Count == 3);
+        }
+
+        [TestMethod]
+        public void GetUserById()
+        {
+            var service = new OnCoursesImplementation();
+
+            int request = 1;
+            var res = service.GetUserById(request);
+
+            Xunit.Assert.NotNull(res);
+            Xunit.Assert.True(res.Id ==1 && res.FullName.Equals("Dimitris Kosmas") && res.Email.Equals("dimitkos@yahoo.gr"));
+        }
+        [TestMethod]
+        public void GetUserByIdUnhappy()
+        {
+            var service = new OnCoursesImplementation();
+
+            int request = 1000;
+            var res = service.GetUserById(request);
+
+            Xunit.Assert.Null(res);
+            
         }
     }
 }

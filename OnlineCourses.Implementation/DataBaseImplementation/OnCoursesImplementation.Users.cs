@@ -23,5 +23,17 @@ namespace OnlineCourses.Implementation.DataBaseImplementation
                 };
             }
         }
+
+        public Users GetUserById(int userId)
+        {
+            string sql = @"Select * From users Where id=@id";
+            var parameters = new {id = userId };
+
+            using (var con = GetSqlConnection())
+            {
+                var response = con.Query<Users>(sql,parameters).SingleOrDefault();
+                return response;
+            }
+        }
     }
 }
