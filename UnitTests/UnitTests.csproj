@@ -72,10 +72,21 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\xunit.analyzers.0.10.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OnlineCourses.Implementation\OnlineCourses.Implementation.csproj">
+      <Project>{81C3FE3D-8613-4523-98A3-7927C4C53A83}</Project>
+      <Name>OnlineCourses.Implementation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineCourses.Types\OnlineCourses.Types.csproj">
+      <Project>{5828B9D9-9AA5-4358-91AC-5F07E6825370}</Project>
+      <Name>OnlineCourses.Types</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

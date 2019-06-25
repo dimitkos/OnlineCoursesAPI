@@ -61,6 +61,10 @@
       <Project>{0532C1C2-6083-48D9-84EC-E8E0EF07D5C4}</Project>
       <Name>OnlineCourses.Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OnlineCourses.Types\OnlineCourses.Types.csproj">
+      <Project>{5828B9D9-9AA5-4358-91AC-5F07E6825370}</Project>
+      <Name>OnlineCourses.Types</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -49,5 +49,11 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OnlineCourses.Types\OnlineCourses.Types.csproj">
+      <Project>{5828B9D9-9AA5-4358-91AC-5F07E6825370}</Project>
+      <Name>OnlineCourses.Types</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

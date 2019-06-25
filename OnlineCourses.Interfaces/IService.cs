@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnlineCourses.Types.Responses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace OnlineCourses.Interfaces
 {
     public interface IService
     {
-        List<string> GetAllUsers();
+        GetUsersResponse GetUsers();
     }
 }

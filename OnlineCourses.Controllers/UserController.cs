@@ -1,7 +1,11 @@
 ﻿using OnlineCourses.Interfaces;
+using OnlineCourses.Types.DbTypes;
+using OnlineCourses.Types.Responses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -18,12 +22,27 @@ namespace OnlineCourses.Controllers
         }
 
 
-        [HttpGet]
-        [ActionName("getUsers")]
-        public List<string> GetEmployees()
-        {
-            return service.GetAllUsers();
+        //[HttpGet]
+        //[ActionName("getUsers")]
+        //public HttpResponseMessage GetEmployees()
+        //{
+        //    var response = service.GetAllUsers();
+        //    if (response != null)
+        //    {
+        //        return Request.CreateResponse<List<string>>(HttpStatusCode.OK, response);
+        //    }
+        //    else
+        //    {
+        //        return Request.CreateErrorResponse(HttpStatusCode.NotFound, "No Users");
+        //    }
 
+        //}
+
+        [HttpGet]
+        [ActionName("getAllUsers")]
+        public GetUsersResponse getAllUsers()
+        {
+            return service.GetUsers();
         }
     }
 }
