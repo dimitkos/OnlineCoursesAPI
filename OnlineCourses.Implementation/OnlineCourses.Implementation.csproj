@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataBaseImplementation\OnCoursesImplementation.cs" />
+    <Compile Include="DataBaseImplementation\OnCoursesImplementation.Instructors.cs" />
     <Compile Include="DataBaseImplementation\OnCoursesImplementation.Users.cs" />
     <Compile Include="DbImplementation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

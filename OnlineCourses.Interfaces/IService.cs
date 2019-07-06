@@ -13,5 +13,7 @@ namespace OnlineCourses.Interfaces
         GetUsersResponse GetUsers();
 
         Users GetUserById(int userId);
+
+        GetInstructorsResponse GetInstructors();
     }
 }
