@@ -39,7 +39,7 @@ namespace UnitTests
             int request = 1000;
             var res = service.GetUserById(request);
 
-            Xunit.Assert.Null(res);
+            Xunit.Assert.Null(res.User);
             
         }
 

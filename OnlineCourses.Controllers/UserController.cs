@@ -47,9 +47,17 @@ namespace OnlineCourses.Controllers
 
         [HttpGet]
         [ActionName("getUserById")]
-        public GetUserByIdResponse GetUserById([FromBody]int id)
+        public HttpResponseMessage GetUserById([FromBody]int id)
         {
-            return service.GetUserById(id);
+            var response = service.GetUserById(id);
+            if (response.User != null)
+            {
+                return Request.CreateResponse<GetUserByIdResponse>(HttpStatusCode.OK, response);
+            }
+            else
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, " User Not Found");
+            }
         }
     }
 }
