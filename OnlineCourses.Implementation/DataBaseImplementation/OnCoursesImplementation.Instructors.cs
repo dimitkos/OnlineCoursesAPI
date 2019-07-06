@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace OnlineCourses.Implementation.DataBaseImplementation
 {
-    public partial class OnCoursesImplementation :IService
+    public partial class OnCoursesImplementation 
     {
         public GetInstructorsResponse GetInstructors()
         {
