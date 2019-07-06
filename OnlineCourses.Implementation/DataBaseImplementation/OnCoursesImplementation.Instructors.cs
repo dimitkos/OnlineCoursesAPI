@@ -14,7 +14,7 @@ namespace OnlineCourses.Implementation.DataBaseImplementation
     {
         public GetInstructorsResponse GetInstructors()
         {
-            string sql = @"Select * From instructors";
+            string sql = @"Select * From instructor";
             using (var con = GetSqlConnection())
             {
                 var response = con.Query<Instructor>(sql);

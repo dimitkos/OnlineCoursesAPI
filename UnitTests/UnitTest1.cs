@@ -30,6 +30,7 @@ namespace UnitTests
             Xunit.Assert.NotNull(res);
             Xunit.Assert.True(res.Id ==1 && res.FullName.Equals("Dimitris Kosmas") && res.Email.Equals("dimitkos@yahoo.gr"));
         }
+
         [TestMethod]
         public void GetUserByIdUnhappy()
         {
@@ -40,6 +41,16 @@ namespace UnitTests
 
             Xunit.Assert.Null(res);
             
+        }
+
+        [TestMethod]
+        public void GetInstructors()
+        {
+            var service = new OnCoursesImplementation();
+
+            var res = service.GetInstructors();
+
+            Xunit.Assert.True(res.Instructors.ToList().Count == 4);
         }
     }
 }
