@@ -40,7 +40,7 @@ namespace OnlineCourses.Controllers
 
         [HttpGet]
         [ActionName("getAllUsers")]
-        public GetUsersResponse getAllUsers()
+        public GetUsersResponse GetAllUsers()
         {
             return service.GetUsers();
         }
