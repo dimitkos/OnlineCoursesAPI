@@ -24,7 +24,7 @@ namespace OnlineCourses.Implementation.DataBaseImplementation
             }
         }
 
-        public Users GetUserById(int userId)
+        public GetUserByIdResponse GetUserById(int userId)
         {
             string sql = @"Select * From users Where id=@id";
             var parameters = new {id = userId };
@@ -32,7 +32,10 @@ namespace OnlineCourses.Implementation.DataBaseImplementation
             using (var con = GetSqlConnection())
             {
                 var response = con.Query<Users>(sql,parameters).SingleOrDefault();
-                return response;
+                return new GetUserByIdResponse
+                {
+                    User = response
+                };
             }
         }
     }

@@ -27,8 +27,8 @@ namespace UnitTests
             int request = 1;
             var res = service.GetUserById(request);
 
-            Xunit.Assert.NotNull(res);
-            Xunit.Assert.True(res.Id ==1 && res.FullName.Equals("Dimitris Kosmas") && res.Email.Equals("dimitkos@yahoo.gr"));
+            Xunit.Assert.NotNull(res.User);
+            Xunit.Assert.True(res.User.Id ==1 && res.User.FullName.Equals("Dimitris Kosmas") && res.User.Email.Equals("dimitkos@yahoo.gr"));
         }
 
         [TestMethod]

@@ -47,7 +47,7 @@ namespace OnlineCourses.Controllers
 
         [HttpGet]
         [ActionName("getUserById")]
-        public Users GetUserById([FromBody]int id)
+        public GetUserByIdResponse GetUserById([FromBody]int id)
         {
             return service.GetUserById(id);
         }
