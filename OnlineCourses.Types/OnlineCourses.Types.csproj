@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="DbTypes\Category.cs" />
     <Compile Include="DbTypes\Course.cs" />
+    <Compile Include="DbTypes\Framework.cs" />
     <Compile Include="DbTypes\Instructor.cs" />
     <Compile Include="DbTypes\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
