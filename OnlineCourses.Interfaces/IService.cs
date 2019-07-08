@@ -1,4 +1,5 @@
 ﻿using OnlineCourses.Types.DbTypes;
+using OnlineCourses.Types.Requests;
 using OnlineCourses.Types.Responses;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace OnlineCourses.Interfaces
     {
         GetUsersResponse GetUsers();
 
-        GetUserByIdResponse GetUserById(int userId);
+        GetUserByIdResponse GetUserById(GetUserByIdRequest request);
 
         GetInstructorsResponse GetInstructors();
     }

@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OnlineCourses.Implementation;
 using System.Linq;
 using OnlineCourses.Implementation.DataBaseImplementation;
+using OnlineCourses.Types.Requests;
 
 namespace UnitTests
 {
@@ -24,7 +25,11 @@ namespace UnitTests
         {
             var service = new OnCoursesImplementation();
 
-            int request = 1;
+            var request = new GetUserByIdRequest()
+            {
+                UserId = 1
+            };
+            
             var res = service.GetUserById(request);
 
             Xunit.Assert.NotNull(res.User);
@@ -35,8 +40,10 @@ namespace UnitTests
         public void GetUserByIdUnhappy()
         {
             var service = new OnCoursesImplementation();
-
-            int request = 1000;
+            var request = new GetUserByIdRequest()
+            {
+                UserId = 100
+            };
             var res = service.GetUserById(request);
 
             Xunit.Assert.Null(res.User);

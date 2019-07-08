@@ -1,5 +1,6 @@
 ﻿using OnlineCourses.Interfaces;
 using OnlineCourses.Types.DbTypes;
+using OnlineCourses.Types.Requests;
 using OnlineCourses.Types.Responses;
 using System;
 using System.Collections.Generic;
@@ -47,9 +48,9 @@ namespace OnlineCourses.Controllers
 
         [HttpGet]
         [ActionName("getUserById")]
-        public HttpResponseMessage GetUserById([FromBody]int id)
+        public HttpResponseMessage GetUserById([FromBody]GetUserByIdRequest request)
         {
-            var response = service.GetUserById(id);
+            var response = service.GetUserById(request);
             if (response.User != null)
             {
                 return Request.CreateResponse<GetUserByIdResponse>(HttpStatusCode.OK, response);

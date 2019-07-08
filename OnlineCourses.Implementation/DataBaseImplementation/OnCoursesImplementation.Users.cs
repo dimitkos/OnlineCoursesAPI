@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using OnlineCourses.Types.DbTypes;
+using OnlineCourses.Types.Requests;
 using OnlineCourses.Types.Responses;
 using System;
 using System.Collections.Generic;
@@ -24,10 +25,10 @@ namespace OnlineCourses.Implementation.DataBaseImplementation
             }
         }
 
-        public GetUserByIdResponse GetUserById(int userId)
+        public GetUserByIdResponse GetUserById(GetUserByIdRequest request)
         {
             string sql = @"Select * From users Where id=@id";
-            var parameters = new {id = userId };
+            var parameters = new {id = request.UserId };
 
             using (var con = GetSqlConnection())
             {
