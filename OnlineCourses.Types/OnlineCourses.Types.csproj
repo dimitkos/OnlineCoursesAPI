@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbTypes\Course.cs" />
     <Compile Include="DbTypes\Instructor.cs" />
     <Compile Include="DbTypes\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
