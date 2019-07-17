@@ -22,28 +22,19 @@ namespace OnlineCourses.Controllers
             this.service = service;
         }
 
-
-        //[HttpGet]
-        //[ActionName("getUsers")]
-        //public HttpResponseMessage GetEmployees()
-        //{
-        //    var response = service.GetAllUsers();
-        //    if (response != null)
-        //    {
-        //        return Request.CreateResponse<List<string>>(HttpStatusCode.OK, response);
-        //    }
-        //    else
-        //    {
-        //        return Request.CreateErrorResponse(HttpStatusCode.NotFound, "No Users");
-        //    }
-
-        //}
-
         [HttpGet]
         [ActionName("getAllUsers")]
-        public GetUsersResponse GetAllUsers()
+        public HttpResponseMessage GetAllUsers()
         {
-            return service.GetUsers();
+            var response = service.GetUsers();
+            if(response.Users != null)
+            {
+                return Request.CreateResponse<GetUsersResponse>(HttpStatusCode.OK, response);
+            }
+            else
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, " Users Not Found");
+            }
         }
 
         [HttpGet]
