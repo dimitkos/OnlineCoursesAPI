@@ -59,5 +59,15 @@ namespace UnitTests
 
             Xunit.Assert.True(res.Instructors.ToList().Count == 4);
         }
+
+        [TestMethod]
+        public void GetFrameworks()
+        {
+            var service = new OnCoursesImplementation();
+
+            var res = service.GetFrameworks();
+
+            Xunit.Assert.True(res.Frameworks.ToList().Count == 8);
+        }
     }
 }
