@@ -79,5 +79,36 @@ namespace UnitTests
 
             Xunit.Assert.True(res.Categories.ToList().Count == 6);
         }
+
+        [TestMethod]
+        public void GetInstructorById()
+        {
+            var service = new OnCoursesImplementation();
+
+            var request = new GetInstructorByIdRequest()
+            {
+                InstructorId = 1
+            };
+
+            var res = service.GetInstructorById(request);
+
+            Xunit.Assert.NotNull(res.Instructors);
+            Xunit.Assert.True(res.Instructors.Id == 1 && res.Instructors.FullName.Equals("Juan Gonzalo") && res.Instructors.Email.Equals("ju.gonzalo@gmail.com"));
+        }
+
+
+        [TestMethod]
+        public void GetInstructorByIdUnhappy()
+        {
+            var service = new OnCoursesImplementation();
+            var request = new GetInstructorByIdRequest()
+            {
+                InstructorId = 100
+            };
+            var res = service.GetInstructorById(request);
+
+            Xunit.Assert.Null(res.Instructors);
+
+        }
     }
 }

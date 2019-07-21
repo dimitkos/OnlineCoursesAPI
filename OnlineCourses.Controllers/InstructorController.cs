@@ -1,4 +1,5 @@
 ﻿using OnlineCourses.Interfaces;
+using OnlineCourses.Types.Requests;
 using OnlineCourses.Types.Responses;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,21 @@ namespace OnlineCourses.Controllers
             else
             {
                 return Request.CreateErrorResponse(HttpStatusCode.NotFound, "No Instructors");
+            }
+        }
+
+        [HttpGet]
+        [ActionName("getInstructorById")]
+        public HttpResponseMessage getInstructorById([FromBody]GetInstructorByIdRequest request)
+        {
+            var response = service.GetInstructorById(request);
+            if (response.Instructors != null)
+            {
+                return Request.CreateResponse<GetInstructorByIdResponse>(HttpStatusCode.OK, response);
+            }
+            else
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, " Instructor Not Found");
             }
         }
     }

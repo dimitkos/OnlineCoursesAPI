@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using OnlineCourses.Interfaces;
 using OnlineCourses.Types.DbTypes;
+using OnlineCourses.Types.Requests;
 using OnlineCourses.Types.Responses;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,21 @@ namespace OnlineCourses.Implementation.DataBaseImplementation
             {
                 var response = con.Query<Instructor>(sql);
                 return new GetInstructorsResponse()
+                {
+                    Instructors = response
+                };
+            }
+        }
+
+        public GetInstructorByIdResponse GetInstructorById(GetInstructorByIdRequest request)
+        {
+            string sql = @"Select * From instructor Where id=@id";
+            var parameters = new { id = request.InstructorId };
+
+            using (var con = GetSqlConnection())
+            {
+                var response = con.Query<Instructor>(sql, parameters).SingleOrDefault();
+                return new GetInstructorByIdResponse
                 {
                     Instructors = response
                 };
