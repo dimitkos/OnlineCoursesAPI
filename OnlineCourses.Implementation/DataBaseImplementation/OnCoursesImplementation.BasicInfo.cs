@@ -23,5 +23,18 @@ namespace OnlineCourses.Implementation.DataBaseImplementation
                 };
             }
         }
+
+        public GetCategoriesResponse GetCategories()
+        {
+            string sql = @"Select * From category";
+            using (var con = GetSqlConnection())
+            {
+                var response = con.Query<Category>(sql);
+                return new GetCategoriesResponse()
+                {
+                    Categories = response
+                };
+            }
+        }
     }
 }

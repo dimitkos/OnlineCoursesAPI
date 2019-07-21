@@ -23,7 +23,7 @@ namespace OnlineCourses.Controllers
 
         [HttpGet]
         [ActionName("getFrameworks")]
-        public HttpResponseMessage GetAllUsers()
+        public HttpResponseMessage GetFrameworks()
         {
             var response = service.GetFrameworks();
             if (response.Frameworks != null)
@@ -33,6 +33,21 @@ namespace OnlineCourses.Controllers
             else
             {
                 return Request.CreateErrorResponse(HttpStatusCode.NotFound, " Frameworks Not Found");
+            }
+        }
+
+        [HttpGet]
+        [ActionName("getCategories")]
+        public HttpResponseMessage GetCategories()
+        {
+            var response = service.GetCategories();
+            if (response.Categories != null)
+            {
+                return Request.CreateResponse<GetCategoriesResponse>(HttpStatusCode.OK, response);
+            }
+            else
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, " Categories Not Found");
             }
         }
     }

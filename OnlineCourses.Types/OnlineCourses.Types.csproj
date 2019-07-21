@@ -51,6 +51,7 @@
     <Compile Include="DbTypes\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Requests\GetUserByIdRequest.cs" />
+    <Compile Include="Responses\GetCategoriesResponse.cs" />
     <Compile Include="Responses\GetFrameworksResponse.cs" />
     <Compile Include="Responses\GetInstructorsResponse.cs" />
     <Compile Include="Responses\GetUserByIdResponse.cs" />

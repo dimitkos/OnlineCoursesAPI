@@ -18,5 +18,7 @@ namespace OnlineCourses.Interfaces
         GetInstructorsResponse GetInstructors();
 
         GetFrameworksResponse GetFrameworks();
+
+        GetCategoriesResponse GetCategories();
     }
 }
