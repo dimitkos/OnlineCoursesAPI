@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataBaseImplementation\OnCoursesImplementation.BasicInfo.cs" />
     <Compile Include="DataBaseImplementation\OnCoursesImplementation.cs" />
     <Compile Include="DataBaseImplementation\OnCoursesImplementation.Instructors.cs" />
     <Compile Include="DataBaseImplementation\OnCoursesImplementation.Users.cs" />
