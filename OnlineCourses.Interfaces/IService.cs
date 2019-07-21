@@ -16,5 +16,7 @@ namespace OnlineCourses.Interfaces
         GetUserByIdResponse GetUserById(GetUserByIdRequest request);
 
         GetInstructorsResponse GetInstructors();
+
+        GetFrameworksResponse GetFrameworks();
     }
 }
