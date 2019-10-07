@@ -22,5 +22,7 @@ namespace OnlineCourses.Interfaces
         GetCategoriesResponse GetCategories();
 
         GetInstructorByIdResponse GetInstructorById(GetInstructorByIdRequest request);
+
+        bool AddNewUser(AddNewUserRequest request);
     }
 }

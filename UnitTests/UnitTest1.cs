@@ -17,7 +17,7 @@ namespace UnitTests
 
             var res = service.GetUsers();
 
-            Xunit.Assert.True(res.Users.ToList().Count == 3);
+            Xunit.Assert.True(res.Users.ToList().Count == 3);//prosthesa enan arra prepei na to allaksw kapws na ginetai aytomata
         }
 
         [TestMethod]
@@ -109,6 +109,43 @@ namespace UnitTests
 
             Xunit.Assert.Null(res.Instructors);
 
+        }
+
+        [TestMethod]
+        public void AddNewUser()
+        {
+            var service = new OnCoursesImplementation();
+            var request = new AddNewUserRequest()
+            {
+                Id = 1000,
+                FullName="Dimitris Kwstas",
+                Email ="asdf@yahoo.gr",
+                Gender = true,
+                Job = "Devops"
+            };
+
+            var res = service.AddNewUser(request);
+
+            Xunit.Assert.True(res);
+            //efoson prosthesa enan twra ayton prepei na ton svinw
+        }
+
+        [TestMethod]
+        public void AddNewUserUnHappy()
+        {
+            var service = new OnCoursesImplementation();
+            var request = new AddNewUserRequest()
+            {
+                Id = 1,
+                FullName = "Dimitris Kwstas",
+                Email = "asdf@yahoo.gr",
+                Gender = true,
+                Job = "Devops"
+            };
+
+            //Xunit.Assert.Throws<Exception>(()=> service.AddNewUser(request));
+            var ex = Xunit.Assert.Throws<Exception>(() => service.AddNewUser(request));
+            Xunit.Assert.Equal("The user id is existing", ex.Message);
         }
     }
 }
