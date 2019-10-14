@@ -51,5 +51,21 @@ namespace OnlineCourses.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.NotFound, " User Not Found");
             }
         }
+
+        [HttpPost]
+        [ActionName("createUser")]
+        public HttpResponseMessage CreateUser([FromBody]AddNewUserRequest request)
+        {
+            var response = service.AddNewUser(request);
+
+            if(response)
+            {
+                return Request.CreateResponse<bool>(HttpStatusCode.OK, response);
+            }
+            else
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Failed to create new user");
+            }
+        }
     }
 }
