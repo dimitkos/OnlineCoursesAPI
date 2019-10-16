@@ -64,5 +64,30 @@ namespace OnlineCourses.Implementation.DataBaseImplementation
             }
             return result==1;
         }
+
+        public bool UpdateUserData(UpdateUserDataRequest request)
+        {
+            string sql = @"UPDATE Users SET FullName = @FullName, Email = @Email,Job = @Job WHERE Id = @Id ";
+            int result;
+            var parameters = new {request.Id,request.FullName,request.Email,request.Job };
+
+            using (var con = GetSqlConnection())
+            {
+                using (var transaction = con.BeginTransaction())
+                {
+                    if (GetUserById(request.ConvertId()).User != null)
+                    {
+                        result = con.Execute(sql, parameters, transaction: transaction);
+                    }
+                    else
+                    {
+                        throw new Exception("User does not exist");
+                    }
+                    transaction.Commit();
+                }
+            }
+
+            return true;
+        }
     }
 }

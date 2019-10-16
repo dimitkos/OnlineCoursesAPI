@@ -24,5 +24,7 @@ namespace OnlineCourses.Interfaces
         GetInstructorByIdResponse GetInstructorById(GetInstructorByIdRequest request);
 
         bool AddNewUser(AddNewUserRequest request);
+
+        bool UpdateUserData(UpdateUserDataRequest request);
     }
 }
