@@ -86,8 +86,7 @@ namespace OnlineCourses.Implementation.DataBaseImplementation
                     transaction.Commit();
                 }
             }
-
-            return true;
+            return result == 1;
         }
     }
 }
