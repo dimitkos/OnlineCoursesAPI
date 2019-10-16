@@ -67,5 +67,21 @@ namespace OnlineCourses.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Failed to create new user");
             }
         }
+
+        [HttpPut]
+        [ActionName("updateUserData")]
+        public HttpResponseMessage UpdateUserData([FromBody]UpdateUserDataRequest request)
+        {
+            var response = service.UpdateUserData(request);
+
+            if(response)
+            {
+                return Request.CreateResponse<bool>(HttpStatusCode.OK, response);
+            }
+            else
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Failed to update user data");
+            }
+        }
     }
 }
