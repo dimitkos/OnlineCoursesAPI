@@ -147,5 +147,38 @@ namespace UnitTests
             var ex = Xunit.Assert.Throws<Exception>(() => service.AddNewUser(request));
             Xunit.Assert.Equal("The user id is existing", ex.Message);
         }
+
+        [TestMethod]
+        public void UpdateUserData()
+        {
+            var service = new OnCoursesImplementation();
+            var request = new UpdateUserDataRequest()
+            {
+                Id = 111,
+                FullName = "Nikolaos Nikou",
+                Email = "testUpdate@yahoo.gr",
+                Job = "IT"
+            };
+
+            var res = service.UpdateUserData(request);
+
+            Xunit.Assert.True(res);
+        }
+
+        [TestMethod]
+        public void UpdateUserDataWithoutExistingId()
+        {
+            var service = new OnCoursesImplementation();
+            var request = new UpdateUserDataRequest()
+            {
+                Id = 11,
+                FullName = "Nikolaos Nikou",
+                Email = "testUpdate@yahoo.gr",
+                Job = "Devops"
+            };
+
+            var ex = Xunit.Assert.Throws<Exception>(() => service.UpdateUserData(request));
+            Xunit.Assert.Equal("User does not exist", ex.Message);
+        }
     }
 }
