@@ -83,5 +83,21 @@ namespace OnlineCourses.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Failed to update user data");
             }
         }
+
+        [HttpDelete]
+        [ActionName("deleteUserAccount")]
+        public HttpResponseMessage DeleteUserAccount([FromBody]DeleteUserAccountRequest request)
+        {
+            var response = service.DeleteUserAccount(request);
+
+            if (response)
+            {
+                return Request.CreateResponse<bool>(HttpStatusCode.OK, response);
+            }
+            else
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Failed to delete user account");
+            }
+        }
     }
 }
