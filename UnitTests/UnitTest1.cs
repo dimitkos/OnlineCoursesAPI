@@ -180,5 +180,19 @@ namespace UnitTests
             var ex = Xunit.Assert.Throws<Exception>(() => service.UpdateUserData(request));
             Xunit.Assert.Equal("User does not exist", ex.Message);
         }
+
+        [TestMethod]
+        public void DeleteUser()
+        {
+            var service = new OnCoursesImplementation();
+            var request = new DeleteUserAccountRequest
+            {
+                Id = 1000
+            };
+
+            var res = service.DeleteUserAccount(request);
+
+            Xunit.Assert.True(res);
+        }
     }
 }
