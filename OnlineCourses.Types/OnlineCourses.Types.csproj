@@ -51,6 +51,7 @@
     <Compile Include="DbTypes\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Requests\AddNewUserRequest.cs" />
+    <Compile Include="Requests\DeleteUserAccountRequest.cs" />
     <Compile Include="Requests\GetInstructorByIdRequest.cs" />
     <Compile Include="Requests\GetUserByIdRequest.cs" />
     <Compile Include="Requests\UpdateUserDataRequest.cs" />

@@ -88,5 +88,19 @@ namespace OnlineCourses.Implementation.DataBaseImplementation
             }
             return result == 1;
         }
+
+        public bool DeleteUserAccount(DeleteUserAccountRequest request)
+        {
+            string sql = @"Delete from Users  WHERE Id = @Id ";
+            int result;
+            var parameters = new { request.Id};
+
+            using (var con = GetSqlConnection())
+            {
+                result = con.Execute(sql, parameters);
+            }
+
+            return result == 1;
+        }
     }
 }
