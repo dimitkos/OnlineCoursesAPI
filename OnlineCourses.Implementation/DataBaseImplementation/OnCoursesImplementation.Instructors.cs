@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using OnlineCourses.Implementation.Helper;
 using OnlineCourses.Interfaces;
 using OnlineCourses.Types.DbTypes;
 using OnlineCourses.Types.Requests;
@@ -39,6 +40,29 @@ namespace OnlineCourses.Implementation.DataBaseImplementation
                     Instructors = response
                 };
             }
+        }
+
+        public bool CreateInstructorAccount(CreateInstructorAccountRequest request)
+        {
+            string sql = @"INSERT INTO Instructor (Id,FullName,Email,Bio,Language) VALUES (@Id,@FullName,@Email,@Bio,@Language)";
+            int result;
+            var parameters = new {};
+            using (var con = GetSqlConnection())
+            {
+                using (var transaction = con.BeginTransaction())
+                {
+                    if(GetInstructorById(request.ConvertInstructorId()).Instructors == null)
+                    {
+                        result = con.Execute(sql, parameters, transaction: transaction);
+                    }
+                    else
+                    {
+                        throw new Exception("The instructor id is existing");
+                    }
+                    transaction.Commit();
+                }
+            }
+            return result == 1;
         }
 
     }

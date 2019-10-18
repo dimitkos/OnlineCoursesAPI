@@ -24,5 +24,13 @@ namespace OnlineCourses.Implementation.Helper
                 UserId = request.Id
             };
         }
+
+        public static GetInstructorByIdRequest ConvertInstructorId(this CreateInstructorAccountRequest request)
+        {
+            return new GetInstructorByIdRequest
+            {
+                InstructorId = request.Id
+            };
+        }
     }
 }

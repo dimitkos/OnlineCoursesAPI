@@ -28,5 +28,7 @@ namespace OnlineCourses.Interfaces
         bool UpdateUserData(UpdateUserDataRequest request);
 
         bool DeleteUserAccount(DeleteUserAccountRequest request);
+
+        bool CreateInstructorAccount(CreateInstructorAccountRequest request);
     }
 }
