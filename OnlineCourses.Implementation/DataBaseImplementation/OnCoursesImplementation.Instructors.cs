@@ -46,7 +46,7 @@ namespace OnlineCourses.Implementation.DataBaseImplementation
         {
             string sql = @"INSERT INTO Instructor (Id,FullName,Email,Bio,Language) VALUES (@Id,@FullName,@Email,@Bio,@Language)";
             int result;
-            var parameters = new {};
+            var parameters = new {request.Id,request.FullName,request.Email,request.Bio,request.Language};
             using (var con = GetSqlConnection())
             {
                 using (var transaction = con.BeginTransaction())

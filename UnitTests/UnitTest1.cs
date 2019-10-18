@@ -194,5 +194,40 @@ namespace UnitTests
 
             Xunit.Assert.True(res);
         }
+
+        [TestMethod]
+        public void CreateInstructorAccount()
+        {
+            var service = new OnCoursesImplementation();
+            var request = new CreateInstructorAccountRequest
+            {
+                Id =12,
+                FullName = "Tommy Leins",
+                Email = "tommy.Leins@gmail.com",
+                Bio = "Senior Andoid Developer",
+                Language = "Kotlin"
+            };
+
+            var res = service.CreateInstructorAccount(request);
+
+            Xunit.Assert.True(res);
+        }
+
+        [TestMethod]
+        public void CreateInstructorAccountUnHappy()
+        {
+            var service = new OnCoursesImplementation();
+            var request = new CreateInstructorAccountRequest
+            {
+                Id = 12,
+                FullName = "Tommy Leins",
+                Email = "tommy.Leins@gmail.com",
+                Bio = "Senior Andoid Developer",
+                Language = "Kotlin"
+            };
+
+            var ex = Xunit.Assert.Throws<Exception>(() => service.CreateInstructorAccount(request));
+            Xunit.Assert.Equal("The instructor id is existing", ex.Message);
+        }
     }
 }
