@@ -37,7 +37,7 @@ namespace OnlineCourses.Implementation.DataBaseImplementation
                 var response = con.Query<Instructor>(sql, parameters).SingleOrDefault();
                 return new GetInstructorByIdResponse
                 {
-                    Instructors = response
+                    Instructor = response
                 };
             }
         }
@@ -51,7 +51,7 @@ namespace OnlineCourses.Implementation.DataBaseImplementation
             {
                 using (var transaction = con.BeginTransaction())
                 {
-                    if(GetInstructorById(request.ConvertInstructorId()).Instructors == null)
+                    if(GetInstructorById(request.ConvertInstructorId()).Instructor == null)
                     {
                         result = con.Execute(sql, parameters, transaction: transaction);
                     }

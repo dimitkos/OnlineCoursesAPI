@@ -41,13 +41,29 @@ namespace OnlineCourses.Controllers
         public HttpResponseMessage getInstructorById([FromBody]GetInstructorByIdRequest request)
         {
             var response = service.GetInstructorById(request);
-            if (response.Instructors != null)
+            if (response.Instructor != null)
             {
                 return Request.CreateResponse<GetInstructorByIdResponse>(HttpStatusCode.OK, response);
             }
             else
             {
                 return Request.CreateErrorResponse(HttpStatusCode.NotFound, " Instructor Not Found");
+            }
+        }
+
+        [HttpPost]
+        [ActionName("createInstructorAccount")]
+        public HttpResponseMessage CreateInstructorAccount([FromBody]CreateInstructorAccountRequest request)
+        {
+            var response = service.CreateInstructorAccount(request);
+
+            if (response)
+            {
+                return Request.CreateResponse<bool>(HttpStatusCode.OK, response);
+            }
+            else
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Failed to create new instructor");
             }
         }
     }

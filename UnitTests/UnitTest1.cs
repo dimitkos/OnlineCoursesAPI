@@ -92,8 +92,8 @@ namespace UnitTests
 
             var res = service.GetInstructorById(request);
 
-            Xunit.Assert.NotNull(res.Instructors);
-            Xunit.Assert.True(res.Instructors.Id == 1 && res.Instructors.FullName.Equals("Juan Gonzalo") && res.Instructors.Email.Equals("ju.gonzalo@gmail.com"));
+            Xunit.Assert.NotNull(res.Instructor);
+            Xunit.Assert.True(res.Instructor.Id == 1 && res.Instructor.FullName.Equals("Juan Gonzalo") && res.Instructor.Email.Equals("ju.gonzalo@gmail.com"));
         }
 
 
@@ -107,7 +107,7 @@ namespace UnitTests
             };
             var res = service.GetInstructorById(request);
 
-            Xunit.Assert.Null(res.Instructors);
+            Xunit.Assert.Null(res.Instructor);
 
         }
 

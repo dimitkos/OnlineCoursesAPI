@@ -12,6 +12,6 @@ namespace OnlineCourses.Types.Responses
     public class GetInstructorByIdResponse
     {
         [DataMember(Name = "instructor")]
-        public Instructor Instructors { get; set; }
+        public Instructor Instructor { get; set; }
     }
 }
