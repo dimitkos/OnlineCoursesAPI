@@ -66,5 +66,21 @@ namespace OnlineCourses.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Failed to create new instructor");
             }
         }
+
+        [HttpPut]
+        [ActionName("updateInstructorData")]
+        public HttpResponseMessage UpdateInstructorData([FromBody]UpdateInstructorDataRequest request)
+        {
+            var response = service.UpdateInstructorData(request);
+            if (response)
+            {
+                return Request.CreateResponse<bool>(HttpStatusCode.OK, response);
+            }
+            else
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Failed to update instructor data");
+            }
+
+        }
     }
 }
