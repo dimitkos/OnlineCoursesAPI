@@ -65,5 +65,28 @@ namespace OnlineCourses.Implementation.DataBaseImplementation
             return result == 1;
         }
 
+        public bool UpdateInstructorData(UpdateInstructorDataRequest request)
+        {
+            string sql = @"UPDATE Instructor SET FullName = @FullName, Email = @Email,Bio = @Bio ,Language = @Language WHERE Id = @Id ";
+            int result;
+            var parameters = new { request.Id, request.FullName, request.Email, request.Bio ,request.Language };
+            using (var con = GetSqlConnection())
+            {
+                using (var transaction = con.BeginTransaction())
+                {
+                    if (GetInstructorById(request.ConvertInstructorId()).Instructor != null)
+                    {
+                        result = con.Execute(sql, parameters, transaction: transaction);
+                    }
+                    else
+                    {
+                        throw new Exception("Instructor does not exist");
+                    }
+                    transaction.Commit();
+                }
+            }
+            return result == 1;
+        }
+
     }
 }
