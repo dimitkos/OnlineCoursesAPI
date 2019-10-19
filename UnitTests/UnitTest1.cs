@@ -229,5 +229,40 @@ namespace UnitTests
             var ex = Xunit.Assert.Throws<Exception>(() => service.CreateInstructorAccount(request));
             Xunit.Assert.Equal("The instructor id is existing", ex.Message);
         }
+
+        [TestMethod]
+        public void UpdateInstructorData()
+        {
+            var service = new OnCoursesImplementation();
+            var request = new UpdateInstructorDataRequest()
+            {
+                Id = 12,
+                FullName = "Tommy Leins",
+                Email = "tommy.Leins@gmail.com",
+                Bio = "Senior Andoid Developer/Java Developer",
+                Language = "Kotlin"
+            };
+
+            var res = service.UpdateInstructorData(request);
+
+            Xunit.Assert.True(res);
+        }
+
+        [TestMethod]
+        public void UpdateInstructorDataUnHappy()
+        {
+            var service = new OnCoursesImplementation();
+            var request = new UpdateInstructorDataRequest
+            {
+                Id = 1112,
+                FullName = "Tommy Leins",
+                Email = "tommy.Leins@gmail.com",
+                Bio = "Senior Andoid Developer",
+                Language = "Kotlin"
+            };
+
+            var ex = Xunit.Assert.Throws<Exception>(() => service.UpdateInstructorData(request));
+            Xunit.Assert.Equal("Instructor does not exist", ex.Message);
+        }
     }
 }
