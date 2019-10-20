@@ -30,5 +30,8 @@ namespace OnlineCourses.Types.DbTypes
 
         [DataMember(Name = "frameworkId")]
         public string FrameworkId { get; set; }
+
+        [DataMember(Name = "instructorId")]
+        public int InstructorId { get; set; }
     }
 }
