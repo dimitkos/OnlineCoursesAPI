@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BasicinfoController.cs" />
+    <Compile Include="CourseController.cs" />
     <Compile Include="InstructorController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserController.cs" />
