@@ -32,5 +32,7 @@ namespace OnlineCourses.Interfaces
         bool CreateInstructorAccount(CreateInstructorAccountRequest request);
 
         bool UpdateInstructorData(UpdateInstructorDataRequest request);
+
+        GetCoursesResponse GetAllCourses();
     }
 }
