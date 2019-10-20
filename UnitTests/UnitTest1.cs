@@ -264,5 +264,16 @@ namespace UnitTests
             var ex = Xunit.Assert.Throws<Exception>(() => service.UpdateInstructorData(request));
             Xunit.Assert.Equal("Instructor does not exist", ex.Message);
         }
+
+        [TestMethod]
+        public void GetAllCourses()
+        {
+            var service = new OnCoursesImplementation();
+
+            var res = service.GetAllCourses();
+
+            Xunit.Assert.NotEmpty(res.Courses);
+            Xunit.Assert.True(res.Courses.ToList().Count == 2);
+        }
     }
 }

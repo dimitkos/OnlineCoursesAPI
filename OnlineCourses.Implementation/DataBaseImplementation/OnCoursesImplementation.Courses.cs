@@ -12,7 +12,7 @@ namespace OnlineCourses.Implementation.DataBaseImplementation
     {
         public GetCoursesResponse GetAllCourses()
         {
-            string sql = @"select c.id,c.title,c.description,c.rating,c.price,ins.fullname ,cat.name ,fr.name
+            string sql = @"select c.id,c.title,c.description,c.rating,c.price,ins.fullname as instructorName,cat.name as categoryName,fr.name as frameworkName
                         from course as c
                         inner join instructor as ins
                         on c.instructorId = ins.id
