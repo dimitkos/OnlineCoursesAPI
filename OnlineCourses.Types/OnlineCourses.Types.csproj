@@ -57,7 +57,9 @@
     <Compile Include="Requests\GetUserByIdRequest.cs" />
     <Compile Include="Requests\UpdateInstructorDataRequest.cs" />
     <Compile Include="Requests\UpdateUserDataRequest.cs" />
+    <Compile Include="Responses\CourseResponse.cs" />
     <Compile Include="Responses\GetCategoriesResponse.cs" />
+    <Compile Include="Responses\GetCoursesResponse.cs" />
     <Compile Include="Responses\GetFrameworksResponse.cs" />
     <Compile Include="Responses\GetInstructorByIdResponse.cs" />
     <Compile Include="Responses\GetInstructorsResponse.cs" />
