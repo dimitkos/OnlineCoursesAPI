@@ -1,4 +1,5 @@
 ﻿using OnlineCourses.Interfaces;
+using OnlineCourses.Types.Requests;
 using OnlineCourses.Types.Responses;
 using System;
 using System.Collections.Generic;
@@ -34,5 +35,21 @@ namespace OnlineCourses.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.NotFound, "No courses found");
             }
         }
+
+        [HttpPost]
+        [ActionName("addNewCourse")]
+        public HttpResponseMessage AddNewCourse([FromBody] AddNewCourseRequest request)
+        {
+            var response = service.AddNewCourse(request);
+            if (response)
+            {
+                return Request.CreateResponse<bool>(HttpStatusCode.OK, response);
+            }
+            else
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "No course added");
+            }
+        }
+
     }
 }
