@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using OnlineCourses.Types.Requests;
 using OnlineCourses.Types.Responses;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,41 @@ namespace OnlineCourses.Implementation.DataBaseImplementation
                 {
                     Courses = response
                 };
+            }
+        }
+
+        public bool AddNewCourse(AddNewCourseRequest request)
+        {
+            string sql = @"INSERT INTO Course (Id,Title,Description,Rating,Price,CategoryId,FrameworkId,InstructorId) VALUES (@Id,@Title,@Description,@Rating,@Price,@CategoryId,@FrameworkId,@InstructorId)";
+            int result;
+            var parameters = new { request.Id, request.Title, request.Description, request.Rating, request.Price, request.CategoryId, request.FrameworkId, request.InstructorId };
+            using (var con = GetSqlConnection())
+            {
+                using (var transaction = con.BeginTransaction())
+                {
+                    if(CheckIfCourseNotExists(request.Id))
+                    {
+                        result = con.Execute(sql, parameters, transaction: transaction);
+
+                    }
+                    else
+                    {
+                        throw new Exception("The Course id is existing");
+                    }
+                    transaction.Commit();
+                }
+            }
+            return result ==1;
+        }
+
+        private bool CheckIfCourseNotExists(int requestId)
+        {
+            string sql = @"Select * From Course Where Id=@Id";
+            var parameters = new { Id = requestId };
+            using (var con = GetSqlConnection())
+            {
+                var response = con.Query<CourseResponse>(sql,parameters).FirstOrDefault();
+                return response == null ? true : false;
             }
         }
     }

@@ -50,6 +50,7 @@
     <Compile Include="DbTypes\Instructor.cs" />
     <Compile Include="DbTypes\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Requests\AddNewCourseRequest.cs" />
     <Compile Include="Requests\AddNewUserRequest.cs" />
     <Compile Include="Requests\CreateInstructorAccountRequest.cs" />
     <Compile Include="Requests\DeleteUserAccountRequest.cs" />
