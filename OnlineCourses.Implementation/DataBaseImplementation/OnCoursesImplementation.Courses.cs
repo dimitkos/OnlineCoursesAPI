@@ -57,7 +57,7 @@ namespace OnlineCourses.Implementation.DataBaseImplementation
 
         public bool UpdateCourse(UpdateCourseRequest request)
         {
-            string sql = @"Update Course SET Title=@Title,Description=@Description,Price=@Price) Where Id=@Id";
+            string sql = @"Update Course SET Title=@Title,Description=@Description,Price=@Price Where Id=@Id";
             int result;
             var parameters = new { request.Id, request.Title, request.Description, request.Price};
             using (var con = GetSqlConnection())

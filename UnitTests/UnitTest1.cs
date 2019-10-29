@@ -317,5 +317,38 @@ namespace UnitTests
             var ex = Xunit.Assert.Throws<Exception>(() => service.AddNewCourse(request));
             Xunit.Assert.Equal("The Course id is existing", ex.Message);
         }
+
+        [TestMethod]
+        public void UpdateCourse()
+        {
+            var service = new OnCoursesImplementation();
+            var request = new UpdateCourseRequest
+            {
+                Id = 444,
+                Title = "Python and Machine Learning",
+                Description = "A basic course with most famous machine learning libraries in Python",
+                Price = 11,
+            };
+
+            var res = service.UpdateCourse(request);
+
+            Xunit.Assert.True(res);
+        }
+
+        [TestMethod]
+        public void UpdateCourseWithNoExistingId()
+        {
+            var service = new OnCoursesImplementation();
+            var request = new UpdateCourseRequest
+            {
+                Id = 1444,
+                Title = "Python and Machine Learning",
+                Description = "A basic course with most famous machine learning libraries in Python",
+                Price = 11,
+            };
+
+            var ex = Xunit.Assert.Throws<Exception>(() => service.UpdateCourse(request));
+            Xunit.Assert.Equal("The Course is not updated", ex.Message);
+        }
     }
 }
