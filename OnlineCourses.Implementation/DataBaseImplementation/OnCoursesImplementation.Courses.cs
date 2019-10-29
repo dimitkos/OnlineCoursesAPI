@@ -55,6 +55,29 @@ namespace OnlineCourses.Implementation.DataBaseImplementation
             return result ==1;
         }
 
+        public bool UpdateCourse(UpdateCourseRequest request)
+        {
+            string sql = @"Update Course SET Title=@Title,Description=@Description,Price=@Price) Where Id=@Id";
+            int result;
+            var parameters = new { request.Id, request.Title, request.Description, request.Price};
+            using (var con = GetSqlConnection())
+            {
+                using (var transaction = con.BeginTransaction())
+                {
+                    if (!CheckIfCourseNotExists(request.Id))
+                    {
+                        result = con.Execute(sql, parameters, transaction: transaction);
+                    }
+                    else
+                    {
+                        throw new Exception("The Course is not updated");
+                    }
+                    transaction.Commit();
+                }
+            }
+            return result == 1;
+        }
+
         private bool CheckIfCourseNotExists(int requestId)
         {
             string sql = @"Select * From Course Where Id=@Id";

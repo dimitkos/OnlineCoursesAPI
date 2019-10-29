@@ -36,5 +36,7 @@ namespace OnlineCourses.Interfaces
         GetCoursesResponse GetAllCourses();
 
         bool AddNewCourse(AddNewCourseRequest request);
+
+        bool UpdateCourse(UpdateCourseRequest request);
     }
 }

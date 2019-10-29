@@ -56,6 +56,7 @@
     <Compile Include="Requests\DeleteUserAccountRequest.cs" />
     <Compile Include="Requests\GetInstructorByIdRequest.cs" />
     <Compile Include="Requests\GetUserByIdRequest.cs" />
+    <Compile Include="Requests\UpdateCourseRequest.cs" />
     <Compile Include="Requests\UpdateInstructorDataRequest.cs" />
     <Compile Include="Requests\UpdateUserDataRequest.cs" />
     <Compile Include="Responses\CourseResponse.cs" />
