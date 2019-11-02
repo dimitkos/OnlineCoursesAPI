@@ -51,5 +51,19 @@ namespace OnlineCourses.Controllers
             }
         }
 
+        [HttpPut]
+        [ActionName("updateCourse")]
+        public HttpResponseMessage UpdateCourse([FromBody] UpdateCourseRequest request)
+        {
+            var response = service.UpdateCourse(request);
+            if (response)
+            {
+                return Request.CreateResponse<bool>(HttpStatusCode.OK, response);
+            }
+            else
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Cannot update course");
+            }
+        }
     }
 }
