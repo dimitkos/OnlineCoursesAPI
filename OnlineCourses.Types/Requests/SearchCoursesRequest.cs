@@ -28,7 +28,7 @@ namespace OnlineCourses.Types.Requests
         [DataMember(Name = "instructorName")]
         public string InstructorName { get; set; }
 
-        [DataMember(Name = "categoryrName")]
+        [DataMember(Name = "categoryName")]
         public string CategoryName { get; set; }
 
         [DataMember(Name = "frameworkName")]
