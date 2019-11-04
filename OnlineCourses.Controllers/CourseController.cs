@@ -65,5 +65,25 @@ namespace OnlineCourses.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Cannot update course");
             }
         }
+
+        [HttpGet]
+        [ActionName("searchCourses")]
+        public HttpResponseMessage SearchCourses([FromBody]SearchCoursesRequest request)
+        {
+            var response = service.SearchCourses(request);
+
+            if (response.Courses.ToList().Count > 0 )
+            {
+                return Request.CreateResponse<GetCoursesResponse>(HttpStatusCode.OK, response);
+            }
+            else if(response.Courses.ToList().Count == 0)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NoContent, "No courses found");
+            }
+            else
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Something went wrong...");
+            }
+        }
     }
 }
