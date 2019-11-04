@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="DbTypes\Category.cs" />
     <Compile Include="DbTypes\Course.cs" />
+    <Compile Include="DbTypes\EnrollCourse.cs" />
     <Compile Include="DbTypes\Framework.cs" />
     <Compile Include="DbTypes\Instructor.cs" />
     <Compile Include="DbTypes\Users.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="Requests\AddNewUserRequest.cs" />
     <Compile Include="Requests\CreateInstructorAccountRequest.cs" />
     <Compile Include="Requests\DeleteUserAccountRequest.cs" />
+    <Compile Include="Requests\EnrollCourseRequest.cs" />
     <Compile Include="Requests\GetInstructorByIdRequest.cs" />
     <Compile Include="Requests\GetUserByIdRequest.cs" />
     <Compile Include="Requests\SearchCoursesRequest.cs" />

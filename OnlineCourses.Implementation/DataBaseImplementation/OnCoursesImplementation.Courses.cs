@@ -93,6 +93,20 @@ namespace OnlineCourses.Implementation.DataBaseImplementation
             }
         }
 
+        public bool EnrollCourse(EnrollCourseRequest request)
+        {
+            string sql = @"Insert Into EnrollCourse (UserId,CourseId,Comment) VALUES (@UserId,@CourseId,@Comment)";
+
+            int result;
+            var parameters = new { request.UserId, request.CourseId};
+
+            using (var con = GetSqlConnection())
+            {
+                result = con.Execute(sql, parameters);
+            }
+            return result==1;
+        }
+
         #region private methods
         private Dictionary<string, DynamicParameters> SetUpSqlQueurySearchCOurses(SearchCoursesRequest request)
         {
