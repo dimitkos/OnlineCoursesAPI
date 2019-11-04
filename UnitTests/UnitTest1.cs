@@ -442,5 +442,22 @@ namespace UnitTests
 
             Xunit.Assert.True(res.Courses.ToList().Count > 0);
         }
+
+        [TestMethod]
+        public void EnrollCourse()
+        {
+            var service = new OnCoursesImplementation();
+
+            var request = new EnrollCourseRequest
+            {
+                UserId = 1,
+                CourseId =1,
+                Comment = null
+            };
+
+            var res = service.EnrollCourse(request);
+
+            Xunit.Assert.True(res);
+        }
     }
 }
