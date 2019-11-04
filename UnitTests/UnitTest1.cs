@@ -350,5 +350,97 @@ namespace UnitTests
             var ex = Xunit.Assert.Throws<Exception>(() => service.UpdateCourse(request));
             Xunit.Assert.Equal("The Course is not updated", ex.Message);
         }
+
+        [TestMethod]
+        public void SearchCoursesByTitle()
+        {
+            var service = new OnCoursesImplementation();
+
+            var request = new SearchCoursesRequest
+            {
+                Title = "ch",
+            };
+
+            var res = service.SearchCourses(request);
+
+            Xunit.Assert.True(res.Courses.ToList().Count>0);
+        }
+
+        [TestMethod]
+        public void SearchCoursesByFrameworkName()
+        {
+            var service = new OnCoursesImplementation();
+
+            var request = new SearchCoursesRequest
+            {
+                FrameworkName = ".NET",
+            };
+
+            var res = service.SearchCourses(request);
+
+            Xunit.Assert.True(res.Courses.ToList().Count > 0);
+        }
+
+        [TestMethod]
+        public void SearchCoursesByCategoryName()
+        {
+            var service = new OnCoursesImplementation();
+
+            var request = new SearchCoursesRequest
+            {
+                CategoryName = "Software Development",
+            };
+
+            var res = service.SearchCourses(request);
+
+            Xunit.Assert.True(res.Courses.ToList().Count > 0);
+        }
+
+        [TestMethod]
+        public void SearchCoursesByInstructorName()
+        {
+            var service = new OnCoursesImplementation();
+
+            var request = new SearchCoursesRequest
+            {
+                InstructorName = "Marc James",
+            };
+
+            var res = service.SearchCourses(request);
+
+            Xunit.Assert.True(res.Courses.ToList().Count > 0);
+        }
+
+        [TestMethod]
+        public void SearchCoursesByPrice()
+        {
+            var service = new OnCoursesImplementation();
+
+            var request = new SearchCoursesRequest
+            {
+                UpPrice =25.0m ,
+                DownPrice=12.0m
+            };
+
+            var res = service.SearchCourses(request);
+
+            Xunit.Assert.True(res.Courses.ToList().Count > 0);
+        }
+
+        [TestMethod]
+        public void SearchCoursesByRating()
+        {
+            var service = new OnCoursesImplementation();
+
+            var request = new SearchCoursesRequest
+            {
+                UpRating = 5.0m,
+                DownRating = 4.6m
+            };
+
+            var res = service.SearchCourses(request);
+
+            Xunit.Assert.True(res.Courses.ToList().Count > 0);
+        }
     }
 }

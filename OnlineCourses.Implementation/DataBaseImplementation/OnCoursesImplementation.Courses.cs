@@ -80,66 +80,7 @@ namespace OnlineCourses.Implementation.DataBaseImplementation
 
         public GetCoursesResponse SearchCourses(SearchCoursesRequest request)
         {
-            Dictionary<string, DynamicParameters> searchDictionary = new Dictionary<string, DynamicParameters>();
-            var dynamicParameters = new DynamicParameters();
-
-            string sql = @"select c.id,c.title,c.description,c.rating,c.price,ins.fullname as instructorName,cat.name as categoryName,fr.name as frameworkName
-                        from course as c
-                        inner join instructor as ins
-                        on c.instructorId = ins.id
-                        inner join category as cat
-                        on c.categoryId = cat.categoryId
-                        inner join framework as fr
-                        on c.frameworkId = fr.frameworkId 
-                        Where 1=1";
-
-            if(!string.IsNullOrWhiteSpace(request.Title))
-            {
-            
-                sql += " AND Title = @Title ";
-                dynamicParameters.Add("@Title", request.Title);
-            
-            }
-
-            if(!string.IsNullOrWhiteSpace(request.InstructorName))
-            {
-
-                sql += " AND InstructorName = @InstructorName ";
-                dynamicParameters.Add("@InstructorName", request.InstructorName);
-
-            }
-
-            if (!string.IsNullOrWhiteSpace(request.CategoryName))
-            {
-
-                sql += " AND CategoryName = @CategoryName ";
-                dynamicParameters.Add("@CategoryName", request.CategoryName);
-
-            }
-
-            if (!string.IsNullOrWhiteSpace(request.InstructorName))
-            {
-
-                sql += " AND InstructorName = @InstructorName ";
-                dynamicParameters.Add("@InstructorName", request.InstructorName);
-
-            }
-
-            if (request.UpPrice.HasValue && request.DownPrice.HasValue && request.DownPrice < request.UpPrice)
-            {
-                sql += " AND Price Between @DownPrice And @UpPrice ";
-                dynamicParameters.Add("@DownPrice", request.DownPrice);
-                dynamicParameters.Add("@UpPrice", request.UpPrice);
-            }
-
-            if (request.UpRating.HasValue && request.DownRating.HasValue && request.DownRating < request.UpRating)
-            {
-                sql += " AND Rating Between @DownRating And @UpRating ";
-                dynamicParameters.Add("@DownRating", request.DownRating);
-                dynamicParameters.Add("@UpRating", request.UpRating);
-            }
-
-            searchDictionary.Add(sql, dynamicParameters);
+            var searchDictionary = SetUpSqlQueurySearchCOurses(request);
 
             using (var con = GetSqlConnection())
             {
@@ -152,6 +93,57 @@ namespace OnlineCourses.Implementation.DataBaseImplementation
             }
         }
 
+        #region private methods
+        private Dictionary<string, DynamicParameters> SetUpSqlQueurySearchCOurses(SearchCoursesRequest request)
+        {
+            Dictionary<string, DynamicParameters> searchDictionary = new Dictionary<string, DynamicParameters>();
+            var dynamicParameters = new DynamicParameters();
+
+            string sql = SqlQueurySearchCOurses();
+
+            if (!string.IsNullOrWhiteSpace(request.Title))
+            {
+                sql += " AND c.title LIKE '%' + @Title + '%' ";
+                dynamicParameters.Add("@Title", request.Title);
+
+            }
+
+            if (!string.IsNullOrWhiteSpace(request.InstructorName))
+            {
+                sql += " AND ins.fullname = @fullname ";
+                dynamicParameters.Add("@fullname", request.InstructorName);
+            }
+
+            if (!string.IsNullOrWhiteSpace(request.FrameworkName))
+            {
+                sql += " AND fr.name = @Framework ";
+                dynamicParameters.Add("@Framework", request.FrameworkName);
+            }
+
+            if (!string.IsNullOrWhiteSpace(request.CategoryName))
+            {
+                sql += " AND cat.name = @CategoryName ";
+                dynamicParameters.Add("@CategoryName", request.CategoryName);
+            }
+
+            if (request.UpPrice.HasValue && request.DownPrice.HasValue && request.DownPrice < request.UpPrice)
+            {
+                sql += " AND c.price Between @DownPrice And @UpPrice ";
+                dynamicParameters.Add("@DownPrice", request.DownPrice);
+                dynamicParameters.Add("@UpPrice", request.UpPrice);
+            }
+
+            if (request.UpRating.HasValue && request.DownRating.HasValue && request.DownRating < request.UpRating)
+            {
+                sql += " AND c.rating Between @DownRating And @UpRating ";
+                dynamicParameters.Add("@DownRating", request.DownRating);
+                dynamicParameters.Add("@UpRating", request.UpRating);
+            }
+
+            searchDictionary.Add(sql, dynamicParameters);
+            return searchDictionary;
+        }
+
         private bool CheckIfCourseNotExists(int requestId)
         {
             string sql = @"Select * From Course Where Id=@Id";
@@ -162,5 +154,22 @@ namespace OnlineCourses.Implementation.DataBaseImplementation
                 return response == null ? true : false;
             }
         }
+        #endregion
+
+        #region Sql Query
+        private string SqlQueurySearchCOurses()
+        {
+            string sql = @"select c.id,c.title,c.description,c.rating,c.price,ins.fullname as instructorName,cat.name as categoryName,fr.name as frameworkName
+                        from course as c
+                        inner join instructor as ins
+                        on c.instructorId = ins.id
+                        inner join category as cat
+                        on c.categoryId = cat.categoryId
+                        inner join framework as fr
+                        on c.frameworkId = fr.frameworkId 
+                        Where 1=1";
+            return sql;
+        }
+        #endregion
     }
 }
