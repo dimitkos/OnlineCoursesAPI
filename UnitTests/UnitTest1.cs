@@ -459,5 +459,21 @@ namespace UnitTests
 
             Xunit.Assert.True(res);
         }
+
+        [TestMethod]
+        public void GetCoursesByInstructor()
+        {
+            var service = new OnCoursesImplementation();
+
+            var request = new GetCoursesByInstructorRequest
+            {
+                InstructorId = 2,
+            };
+
+            var res = service.GetCoursesByInstructor(request);
+
+            Xunit.Assert.NotNull(res.Instructor);
+            Xunit.Assert.True(res.Courses.ToList().Count >0);
+        }
     }
 }
