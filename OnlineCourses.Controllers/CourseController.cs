@@ -85,5 +85,24 @@ namespace OnlineCourses.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Something went wrong...");
             }
         }
+
+        [HttpGet]
+        [ActionName("getCoursesByInstructor")]
+        public HttpResponseMessage GetCoursesByInstructor([FromBody]GetCoursesByInstructorRequest request)
+        {
+            var response = service.GetCoursesByInstructor(request);
+            if (response.Instructor != null && response.Courses != null)
+            {
+                return Request.CreateResponse<GetCoursesByInstructorResponse>(HttpStatusCode.OK, response);
+            }
+            else if (response.Instructor != null && response.Courses == null)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NoContent, "This instructor has no courses");
+            }
+            else
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Something went wrong...");
+            }
+        }
     }
 }

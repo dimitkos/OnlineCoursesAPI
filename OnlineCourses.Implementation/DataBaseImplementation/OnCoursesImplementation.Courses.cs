@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using OnlineCourses.Types.DbTypes;
 using OnlineCourses.Types.Requests;
 using OnlineCourses.Types.Responses;
 using System;
@@ -105,6 +106,35 @@ namespace OnlineCourses.Implementation.DataBaseImplementation
                 result = con.Execute(sql, parameters);
             }
             return result==1;
+        }
+
+        public GetCoursesByInstructorResponse GetCoursesByInstructor(GetCoursesByInstructorRequest request)
+        {
+            string sqlcourse = @"select c.id,c.title,c.description,c.rating,c.price,ins.fullname as instructorName,cat.name as categoryName,fr.name as frameworkName
+                        from course as c
+                        inner join instructor as ins
+                        on c.instructorId = ins.id
+                        inner join category as cat
+                        on c.categoryId = cat.categoryId
+                        inner join framework as fr
+                        on c.frameworkId = fr.frameworkId 
+                        Where ins.id=@id";
+            string sqlins = @"select * from instructor where id=@id";
+
+            var parameters = new { id = request.InstructorId };
+
+            using (var con = GetSqlConnection())
+            {
+                var courses = con.Query<CourseResponse>(sqlcourse, parameters);
+                var instructors = con.Query<Instructor>(sqlins, parameters).FirstOrDefault();
+
+
+                return new GetCoursesByInstructorResponse
+                {
+                    Instructor = instructors,
+                    Courses = courses.ToList()
+                };
+            }
         }
 
         #region private methods
