@@ -96,10 +96,10 @@ namespace OnlineCourses.Implementation.DataBaseImplementation
 
         public bool EnrollCourse(EnrollCourseRequest request)
         {
-            string sql = @"Insert Into EnrollCourse (UserId,CourseId,Comment) VALUES (@UserId,@CourseId,@Comment)";
+            string sql = @"Insert Into enrolls (UserId,CourseId,Comment) VALUES (@UserId,@CourseId,@Comment)";
 
             int result;
-            var parameters = new { request.UserId, request.CourseId};
+            var parameters = new { request.UserId, request.CourseId, request.Comment};
 
             using (var con = GetSqlConnection())
             {
