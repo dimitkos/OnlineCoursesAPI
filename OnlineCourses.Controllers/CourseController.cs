@@ -104,5 +104,20 @@ namespace OnlineCourses.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Something went wrong...");
             }
         }
+
+        [HttpPost]
+        [ActionName("enrollCourse")]
+        public HttpResponseMessage enrollCourse([FromBody] EnrollCourseRequest request)
+        {
+            var response = service.EnrollCourse(request);
+            if (response)
+            {
+                return Request.CreateResponse<bool>(HttpStatusCode.OK, response);
+            }
+            else
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Course Not Enrolled");
+            }
+        }
     }
 }
