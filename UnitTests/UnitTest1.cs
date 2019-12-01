@@ -475,5 +475,22 @@ namespace UnitTests
             Xunit.Assert.NotNull(res.Instructor);
             Xunit.Assert.True(res.Courses.ToList().Count >0);
         }
+
+        [TestMethod]
+        public void AddComment()
+        {
+            var service = new OnCoursesImplementation();
+
+            var request = new AddCommentRequest
+            {
+                UserId = 1,
+                CourseId = 1,
+                Comment = "Excellent course!!"
+            };
+
+            var res = service.AddComment(request);
+
+            Xunit.Assert.True(res);
+        }
     }
 }
