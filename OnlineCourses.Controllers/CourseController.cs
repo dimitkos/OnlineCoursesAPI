@@ -119,5 +119,20 @@ namespace OnlineCourses.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Course Not Enrolled");
             }
         }
+
+        [HttpPut]
+        [ActionName("addComment")]
+        public HttpResponseMessage AddComment([FromBody] AddCommentRequest request)
+        {
+            var response = service.AddComment(request);
+            if (response)
+            {
+                return Request.CreateResponse<bool>(HttpStatusCode.OK, response);
+            }
+            else
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Cannot add comment,something went wrong..");
+            }
+        }
     }
 }

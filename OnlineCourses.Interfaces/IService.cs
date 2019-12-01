@@ -44,5 +44,7 @@ namespace OnlineCourses.Interfaces
         bool EnrollCourse(EnrollCourseRequest request);
 
         GetCoursesByInstructorResponse GetCoursesByInstructor(GetCoursesByInstructorRequest request);
+
+        bool AddComment(AddCommentRequest request);
     }
 }

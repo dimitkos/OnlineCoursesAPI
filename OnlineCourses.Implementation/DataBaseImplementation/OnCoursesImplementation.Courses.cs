@@ -137,6 +137,19 @@ namespace OnlineCourses.Implementation.DataBaseImplementation
             }
         }
 
+        public bool AddComment(AddCommentRequest request)
+        {
+            string sql = @"UPDATE enrolls SET Comment = @Comment WHERE UserId = @UserId AND CourseId = @CourseId";
+            int result;
+            var parameters = new { request.Comment, request.UserId, request.CourseId };
+
+            using (var con = GetSqlConnection())
+            {
+                result = con.Execute(sql, parameters);
+            }
+            return result == 1;
+        }
+
         #region private methods
         private Dictionary<string, DynamicParameters> SetUpSqlQueurySearchCOurses(SearchCoursesRequest request)
         {
