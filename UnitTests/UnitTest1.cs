@@ -492,5 +492,21 @@ namespace UnitTests
 
             Xunit.Assert.True(res);
         }
+
+        [TestMethod]
+        public void GetAllCommentsByCourse()
+        {
+            var service = new OnCoursesImplementation();
+
+            var request = new CourseCommentsRequest
+            {
+                CourseId = 1,
+            };
+
+            var res = service.GetCommentsByCourse(request);
+
+            Xunit.Assert.True(res.CommentDetails.Count>0);
+        }
+
     }
 }

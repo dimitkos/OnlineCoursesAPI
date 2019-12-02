@@ -2,6 +2,7 @@
 using OnlineCourses.Types.DbTypes;
 using OnlineCourses.Types.Requests;
 using OnlineCourses.Types.Responses;
+using OnlineCourses.Types.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -148,6 +149,25 @@ namespace OnlineCourses.Implementation.DataBaseImplementation
                 result = con.Execute(sql, parameters);
             }
             return result == 1;
+        }
+
+        public CourseCommentsResponse GetCommentsByCourse(CourseCommentsRequest request)
+        {
+            string sql = @"Select us.fullname,en.comment From enrolls as en
+                        inner join users as us
+                        on en.userId = us.id
+                        WHERE en.CourseId = @CourseId";
+            var parameters = new { request.CourseId };
+            using (var con = GetSqlConnection())
+            {
+                var response = con.Query<CommentDetails>(sql,parameters).ToList();
+
+                return new CourseCommentsResponse
+                {
+                    CommentDetails = response
+                };
+            }
+            
         }
 
         #region private methods

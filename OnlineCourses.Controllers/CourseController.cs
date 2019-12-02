@@ -134,5 +134,20 @@ namespace OnlineCourses.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Cannot add comment,something went wrong..");
             }
         }
+
+        [HttpGet]
+        [ActionName("getComments")]
+        public HttpResponseMessage GetComments([FromBody]CourseCommentsRequest request)
+        {
+            var response = service.GetCommentsByCourse(request);
+            if (response.CommentDetails != null)
+            {
+                return Request.CreateResponse<CourseCommentsResponse>(HttpStatusCode.OK, response);
+            }
+            else
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "No Comments found");
+            }
+        }
     }
 }

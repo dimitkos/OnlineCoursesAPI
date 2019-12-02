@@ -54,6 +54,7 @@
     <Compile Include="Requests\AddCommentRequest.cs" />
     <Compile Include="Requests\AddNewCourseRequest.cs" />
     <Compile Include="Requests\AddNewUserRequest.cs" />
+    <Compile Include="Requests\CourseCommentsRequest.cs" />
     <Compile Include="Requests\CreateInstructorAccountRequest.cs" />
     <Compile Include="Requests\DeleteUserAccountRequest.cs" />
     <Compile Include="Requests\EnrollCourseRequest.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="Requests\UpdateCourseRequest.cs" />
     <Compile Include="Requests\UpdateInstructorDataRequest.cs" />
     <Compile Include="Requests\UpdateUserDataRequest.cs" />
+    <Compile Include="Responses\CourseCommentsResponse.cs" />
     <Compile Include="Responses\CourseResponse.cs" />
     <Compile Include="Responses\GetCategoriesResponse.cs" />
     <Compile Include="Responses\GetCoursesByInstructorResponse.cs" />
@@ -73,6 +75,7 @@
     <Compile Include="Responses\GetInstructorsResponse.cs" />
     <Compile Include="Responses\GetUserByIdResponse.cs" />
     <Compile Include="Responses\GetUsersResponse.cs" />
+    <Compile Include="Types\CommentDetails.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
