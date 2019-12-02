@@ -11,6 +11,7 @@ namespace UnitTests
     public class UnitTest1
     {
         [TestMethod]
+        [TestCategory("User")]
         public void GetUsers()
         {
             var service = new OnCoursesImplementation();
@@ -21,6 +22,7 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("User")]
         public void GetUserById()
         {
             var service = new OnCoursesImplementation();
@@ -37,6 +39,7 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("User")]
         public void GetUserByIdUnhappy()
         {
             var service = new OnCoursesImplementation();
@@ -51,6 +54,7 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("Instructor")]
         public void GetInstructors()
         {
             var service = new OnCoursesImplementation();
@@ -61,6 +65,7 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("BasicInfo")]
         public void GetFrameworks()
         {
             var service = new OnCoursesImplementation();
@@ -71,6 +76,7 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("BasicInfo")]
         public void GetCategories()
         {
             var service = new OnCoursesImplementation();
@@ -81,6 +87,7 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("Instructor")]
         public void GetInstructorById()
         {
             var service = new OnCoursesImplementation();
@@ -98,6 +105,7 @@ namespace UnitTests
 
 
         [TestMethod]
+        [TestCategory("Instructor")]
         public void GetInstructorByIdUnhappy()
         {
             var service = new OnCoursesImplementation();
@@ -112,6 +120,7 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("User")]
         public void AddNewUser()
         {
             var service = new OnCoursesImplementation();
@@ -131,6 +140,7 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("User")]
         public void AddNewUserUnHappy()
         {
             var service = new OnCoursesImplementation();
@@ -149,6 +159,7 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("User")]
         public void UpdateUserData()
         {
             var service = new OnCoursesImplementation();
@@ -166,6 +177,7 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("User")]
         public void UpdateUserDataWithoutExistingId()
         {
             var service = new OnCoursesImplementation();
@@ -182,6 +194,7 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("User")]
         public void DeleteUser()
         {
             var service = new OnCoursesImplementation();
@@ -196,6 +209,7 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("Instructor")]
         public void CreateInstructorAccount()
         {
             var service = new OnCoursesImplementation();
@@ -214,6 +228,7 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("Instructor")]
         public void CreateInstructorAccountUnHappy()
         {
             var service = new OnCoursesImplementation();
@@ -231,6 +246,7 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("Instructor")]
         public void UpdateInstructorData()
         {
             var service = new OnCoursesImplementation();
@@ -249,6 +265,7 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("Instructor")]
         public void UpdateInstructorDataUnHappy()
         {
             var service = new OnCoursesImplementation();
@@ -266,6 +283,7 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("Courses")]
         public void GetAllCourses()
         {
             var service = new OnCoursesImplementation();
@@ -277,6 +295,7 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("Courses")]
         public void AddNewCourse()
         {
             var service = new OnCoursesImplementation();
@@ -298,6 +317,7 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("Courses")]
         public void AddNewCourseWithExistingId()
         {
             var service = new OnCoursesImplementation();
@@ -319,6 +339,7 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("Courses")]
         public void UpdateCourse()
         {
             var service = new OnCoursesImplementation();
@@ -336,6 +357,7 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("Courses")]
         public void UpdateCourseWithNoExistingId()
         {
             var service = new OnCoursesImplementation();
@@ -352,6 +374,7 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("Courses")]
         public void SearchCoursesByTitle()
         {
             var service = new OnCoursesImplementation();
@@ -367,6 +390,7 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("Courses")]
         public void SearchCoursesByFrameworkName()
         {
             var service = new OnCoursesImplementation();
@@ -382,6 +406,7 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("Courses")]
         public void SearchCoursesByCategoryName()
         {
             var service = new OnCoursesImplementation();
@@ -397,6 +422,7 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("Courses")]
         public void SearchCoursesByInstructorName()
         {
             var service = new OnCoursesImplementation();
@@ -412,6 +438,7 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("Courses")]
         public void SearchCoursesByPrice()
         {
             var service = new OnCoursesImplementation();
@@ -428,6 +455,7 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("Courses")]
         public void SearchCoursesByRating()
         {
             var service = new OnCoursesImplementation();
@@ -444,6 +472,7 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("User")]
         public void EnrollCourse()
         {
             var service = new OnCoursesImplementation();
@@ -461,6 +490,7 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("Courses")]
         public void GetCoursesByInstructor()
         {
             var service = new OnCoursesImplementation();
@@ -477,6 +507,7 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("Courses")]
         public void AddComment()
         {
             var service = new OnCoursesImplementation();
@@ -494,6 +525,7 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("Courses")]
         public void GetAllCommentsByCourse()
         {
             var service = new OnCoursesImplementation();
@@ -509,6 +541,7 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("Courses")]
         public void GetCoursesByUser()
         {
             var service = new OnCoursesImplementation();
