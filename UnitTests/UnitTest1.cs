@@ -508,5 +508,20 @@ namespace UnitTests
             Xunit.Assert.True(res.CommentDetails.Count>0);
         }
 
+        [TestMethod]
+        public void GetCoursesByUser()
+        {
+            var service = new OnCoursesImplementation();
+
+            var request = new GetEnrollsByUserRequest
+            {
+                UserId = 1,
+            };
+
+            var res = service.GetEnrollsByStudent(request);
+
+            Xunit.Assert.NotNull(res.User);
+            Xunit.Assert.NotNull(res.Courses);
+        }
     }
 }

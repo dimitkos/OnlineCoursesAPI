@@ -170,6 +170,39 @@ namespace OnlineCourses.Implementation.DataBaseImplementation
             
         }
 
+        public GetEnrollsByUserResponse GetEnrollsByStudent(GetEnrollsByUserRequest request)
+        {
+            string sqlcourse = @"select cr.id,cr.title,cr.description,cr.rating,cr.price,fr.name as frameworkName,cat.name as categoryName,ins.fullname as instructorName
+                                from users as us 
+                                inner join enrolls as en
+                                on us.id = en.userId
+                                inner join course as cr
+                                on en.courseId = cr.id
+                                inner join category as cat
+                                on cr.categoryId = cat.categoryId
+                                inner join framework as fr
+                                on cr.frameworkId = fr.frameworkId
+                                inner join instructor as ins
+                                on cr.instructorId = ins.id
+                                where us.id =@id";
+            string sqlUser = @"select * from users where id=@id";
+
+            var parameters = new { id = request.UserId };
+
+            using (var con = GetSqlConnection())
+            {
+                var courses = con.Query<CourseResponse>(sqlcourse, parameters);//course or courseresponse????
+                var user = con.Query<Users>(sqlUser, parameters).FirstOrDefault();
+
+
+                return new GetEnrollsByUserResponse
+                {
+                    User = user,
+                    Courses = courses.ToList()
+                };
+            }
+        }
+
         #region private methods
         private Dictionary<string, DynamicParameters> SetUpSqlQueurySearchCOurses(SearchCoursesRequest request)
         {

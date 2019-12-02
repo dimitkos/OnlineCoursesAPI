@@ -48,5 +48,7 @@ namespace OnlineCourses.Interfaces
         bool AddComment(AddCommentRequest request);
 
         CourseCommentsResponse GetCommentsByCourse(CourseCommentsRequest request);
+
+        GetEnrollsByUserResponse GetEnrollsByStudent(GetEnrollsByUserRequest request);
     }
 }
