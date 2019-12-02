@@ -140,7 +140,7 @@ namespace OnlineCourses.Controllers
         public HttpResponseMessage GetComments([FromBody]CourseCommentsRequest request)
         {
             var response = service.GetCommentsByCourse(request);
-            if (response.Comments != null)
+            if (response.CommentDetails != null)
             {
                 return Request.CreateResponse<CourseCommentsResponse>(HttpStatusCode.OK, response);
             }

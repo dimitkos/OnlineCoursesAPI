@@ -505,7 +505,7 @@ namespace UnitTests
 
             var res = service.GetCommentsByCourse(request);
 
-            Xunit.Assert.True(res.Comments.Count>0);
+            Xunit.Assert.True(res.CommentDetails.Count>0);
         }
 
     }
