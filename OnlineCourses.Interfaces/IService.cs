@@ -46,5 +46,7 @@ namespace OnlineCourses.Interfaces
         GetCoursesByInstructorResponse GetCoursesByInstructor(GetCoursesByInstructorRequest request);
 
         bool AddComment(AddCommentRequest request);
+
+        CourseCommentsResponse GetCommentsByCourse(CourseCommentsRequest request);
     }
 }

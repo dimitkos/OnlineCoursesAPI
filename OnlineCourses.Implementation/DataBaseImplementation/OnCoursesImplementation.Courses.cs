@@ -150,6 +150,22 @@ namespace OnlineCourses.Implementation.DataBaseImplementation
             return result == 1;
         }
 
+        public CourseCommentsResponse GetCommentsByCourse(CourseCommentsRequest request)
+        {
+            string sql = @"Select comment From enrolls WHERE CourseId = @CourseId";
+            var parameters = new { request.CourseId };
+            using (var con = GetSqlConnection())
+            {
+                var response = con.Query<string>(sql,parameters).ToList();
+
+                return new CourseCommentsResponse
+                {
+                    Comments = response
+                };
+            }
+            
+        }
+
         #region private methods
         private Dictionary<string, DynamicParameters> SetUpSqlQueurySearchCOurses(SearchCoursesRequest request)
         {
