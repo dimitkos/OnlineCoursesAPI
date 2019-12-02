@@ -59,6 +59,7 @@
     <Compile Include="Requests\DeleteUserAccountRequest.cs" />
     <Compile Include="Requests\EnrollCourseRequest.cs" />
     <Compile Include="Requests\GetCoursesByInstructorRequest.cs" />
+    <Compile Include="Requests\GetEnrollsByUserRequest.cs" />
     <Compile Include="Requests\GetInstructorByIdRequest.cs" />
     <Compile Include="Requests\GetUserByIdRequest.cs" />
     <Compile Include="Requests\SearchCoursesRequest.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="Responses\GetCategoriesResponse.cs" />
     <Compile Include="Responses\GetCoursesByInstructorResponse.cs" />
     <Compile Include="Responses\GetCoursesResponse.cs" />
+    <Compile Include="Responses\GetEnrollsByUserResponse.cs" />
     <Compile Include="Responses\GetFrameworksResponse.cs" />
     <Compile Include="Responses\GetInstructorByIdResponse.cs" />
     <Compile Include="Responses\GetInstructorsResponse.cs" />

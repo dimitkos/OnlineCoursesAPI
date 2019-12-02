@@ -149,5 +149,20 @@ namespace OnlineCourses.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.NotFound, "No Comments found");
             }
         }
+
+        [HttpGet]
+        [ActionName("getCoursesByUser")]
+        public HttpResponseMessage GetCoursesByUser([FromBody]GetEnrollsByUserRequest request)
+        {
+            var response = service.GetEnrollsByStudent(request);
+            if (response.Courses != null && response.User != null)
+            {
+                return Request.CreateResponse<GetEnrollsByUserResponse>(HttpStatusCode.OK, response);
+            }
+            else
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Something went wrong...");
+            }
+        }
     }
 }
