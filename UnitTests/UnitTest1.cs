@@ -18,7 +18,7 @@ namespace UnitTests
 
             var res = service.GetUsers();
 
-            Xunit.Assert.True(res.Users.ToList().Count == 3);//prosthesa enan arra prepei na to allaksw kapws na ginetai aytomata
+            Xunit.Assert.True(res.Users.ToList().Count > 0);
         }
 
         [TestMethod]
@@ -61,7 +61,7 @@ namespace UnitTests
 
             var res = service.GetInstructors();
 
-            Xunit.Assert.True(res.Instructors.ToList().Count == 4);
+            Xunit.Assert.True(res.Instructors.ToList().Count > 0);
         }
 
         [TestMethod]
@@ -72,7 +72,7 @@ namespace UnitTests
 
             var res = service.GetFrameworks();
 
-            Xunit.Assert.True(res.Frameworks.ToList().Count == 8);
+            Xunit.Assert.True(res.Frameworks.ToList().Count > 0);
         }
 
         [TestMethod]
@@ -83,7 +83,7 @@ namespace UnitTests
 
             var res = service.GetCategories();
 
-            Xunit.Assert.True(res.Categories.ToList().Count == 6);
+            Xunit.Assert.True(res.Categories.ToList().Count > 0);
         }
 
         [TestMethod]
@@ -136,7 +136,6 @@ namespace UnitTests
             var res = service.AddNewUser(request);
 
             Xunit.Assert.True(res);
-            //efoson prosthesa enan twra ayton prepei na ton svinw
         }
 
         [TestMethod]
@@ -291,7 +290,7 @@ namespace UnitTests
             var res = service.GetAllCourses();
 
             Xunit.Assert.NotEmpty(res.Courses);
-            Xunit.Assert.True(res.Courses.ToList().Count == 2);
+            Xunit.Assert.True(res.Courses.ToList().Count > 0);
         }
 
         [TestMethod]
@@ -386,7 +385,7 @@ namespace UnitTests
 
             var res = service.SearchCourses(request);
 
-            Xunit.Assert.True(res.Courses.ToList().Count>0);
+            Xunit.Assert.True(res.Courses.ToList().Count > 0);
         }
 
         [TestMethod]
@@ -503,7 +502,7 @@ namespace UnitTests
             var res = service.GetCoursesByInstructor(request);
 
             Xunit.Assert.NotNull(res.Instructor);
-            Xunit.Assert.True(res.Courses.ToList().Count >0);
+            Xunit.Assert.True(res.Courses.ToList().Count > 0);
         }
 
         [TestMethod]
@@ -537,7 +536,7 @@ namespace UnitTests
 
             var res = service.GetCommentsByCourse(request);
 
-            Xunit.Assert.True(res.CommentDetails.Count>0);
+            Xunit.Assert.True(res.CommentDetails.Count > 0);
         }
 
         [TestMethod]
