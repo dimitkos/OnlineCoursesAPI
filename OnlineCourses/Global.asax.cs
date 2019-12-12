@@ -24,6 +24,7 @@ namespace OnlineCourses
             container.Options.DefaultScopedLifestyle = new AsyncScopedLifestyle();
             container.Register<IService, OnCoursesImplementation>(Lifestyle.Scoped);
             container.Register<IBasicInfo, BasicInfoService>(Lifestyle.Scoped);
+            container.Register<IUser, UserService>(Lifestyle.Scoped);
             container.RegisterWebApiControllers(GlobalConfiguration.Configuration);
 
             container.Verify();
