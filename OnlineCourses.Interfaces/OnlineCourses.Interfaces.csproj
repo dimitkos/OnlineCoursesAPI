@@ -46,6 +46,7 @@
     <Compile Include="IBasicInfo.cs" />
     <Compile Include="IService.cs" />
     <Compile Include="IUser.cs" />
+    <Compile Include="IValidation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

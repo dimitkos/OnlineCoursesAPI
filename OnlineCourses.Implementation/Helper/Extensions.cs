@@ -1,4 +1,5 @@
 ﻿using OnlineCourses.Types.Requests;
+using OnlineCourses.Types.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,6 +39,28 @@ namespace OnlineCourses.Implementation.Helper
             return new GetInstructorByIdRequest
             {
                 InstructorId = request.Id
+            };
+        }
+
+        public static UserData ConvertToUserData(this AddNewUserRequest request)
+        {
+            return new UserData
+            {
+                Id = request.Id,
+                FullName = request.FullName,
+                Email = request.Email,
+                Job = request.Job
+            };
+        }
+
+        public static UserData ConvertToUserData(this UpdateUserDataRequest request)
+        {
+            return new UserData
+            {
+                Id = request.Id,
+                FullName = request.FullName,
+                Email = request.Email,
+                Job = request.Job
             };
         }
     }
