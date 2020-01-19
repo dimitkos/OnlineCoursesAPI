@@ -36,7 +36,7 @@ namespace OnlineCourses.Implementation.Helper
 
         private bool IntIdIsInValid(int id)//ok na thn kanw test
         {
-            if (id < 0 && id > int.MaxValue)
+            if (id < 0 || id > int.MaxValue)
             {
                 return true;
             }
@@ -45,7 +45,7 @@ namespace OnlineCourses.Implementation.Helper
 
         private bool CheckStringIsInValid(string input, int maxLength)//na thn kanw test
         {
-            if (string.IsNullOrWhiteSpace(input) && input.Length > maxLength)
+            if (string.IsNullOrWhiteSpace(input) || input.Length > maxLength)
             {
                 return true;
             }
