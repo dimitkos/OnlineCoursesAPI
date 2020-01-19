@@ -58,6 +58,7 @@
     <Compile Include="DbImplementation.cs" />
     <Compile Include="Helper\Cache.cs" />
     <Compile Include="Helper\Extensions.cs" />
+    <Compile Include="Helper\Validations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

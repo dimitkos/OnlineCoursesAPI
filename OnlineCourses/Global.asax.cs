@@ -1,6 +1,7 @@
 ﻿using OnlineCourses.Implementation;
 using OnlineCourses.Implementation.BusinessLayerImplementation;
 using OnlineCourses.Implementation.DataBaseImplementation;
+using OnlineCourses.Implementation.Helper;
 using OnlineCourses.Interfaces;
 using SimpleInjector;
 using SimpleInjector.Integration.WebApi;
@@ -24,6 +25,8 @@ namespace OnlineCourses
             container.Options.DefaultScopedLifestyle = new AsyncScopedLifestyle();
             container.Register<IService, OnCoursesImplementation>(Lifestyle.Scoped);
             container.Register<IBasicInfo, BasicInfoService>(Lifestyle.Scoped);
+            container.Register<IUser, UserService>(Lifestyle.Scoped);
+            container.Register<IValidation, Validations>(Lifestyle.Scoped);
             container.RegisterWebApiControllers(GlobalConfiguration.Configuration);
 
             container.Verify();

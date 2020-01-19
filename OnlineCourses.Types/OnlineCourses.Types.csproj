@@ -78,6 +78,7 @@
     <Compile Include="Responses\GetUserByIdResponse.cs" />
     <Compile Include="Responses\GetUsersResponse.cs" />
     <Compile Include="Types\CommentDetails.cs" />
+    <Compile Include="Types\UserData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
