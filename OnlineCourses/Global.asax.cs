@@ -27,6 +27,7 @@ namespace OnlineCourses
             container.Register<IBasicInfo, BasicInfoService>(Lifestyle.Scoped);
             container.Register<IUser, UserService>(Lifestyle.Scoped);
             container.Register<IValidation, Validations>(Lifestyle.Scoped);
+            container.Register<IInstructor, InstructorService>(Lifestyle.Scoped);
             container.RegisterWebApiControllers(GlobalConfiguration.Configuration);
 
             container.Verify();
