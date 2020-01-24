@@ -53,9 +53,9 @@ namespace OnlineCourses.Implementation.BusinessLayerImplementation
 
             _validation.NotValidEmail(request.Email);
 
-            _validation.NotValidField(request.Bio, 20);
+            _validation.NotValidField(request.Bio, 256);
 
-            _validation.NotValidField(request.Language, 20);
+            _validation.NotValidField(request.Language, 10);
 
         }
     }
