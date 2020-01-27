@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OnlineCourses.Interfaces
+﻿namespace OnlineCourses.Interfaces
 {
     public interface IValidation
     {
-        void NotValidId(int id);
+        void NotValidId(int id, string name);
 
-        void NotValidField(string input, int lenght);
+        void NotValidField(string input, int lenght, string fieldName);
 
         void NotValidEmail(string email);
     }

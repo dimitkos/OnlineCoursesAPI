@@ -1,10 +1,5 @@
 ﻿using OnlineCourses.Types.Requests;
 using OnlineCourses.Types.Types;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OnlineCourses.Implementation.Helper
 {
@@ -61,6 +56,30 @@ namespace OnlineCourses.Implementation.Helper
                 FullName = request.FullName,
                 Email = request.Email,
                 Job = request.Job
+            };
+        }
+
+        public static InstructorData ConvertToInstructorData(this CreateInstructorAccountRequest request)
+        {
+            return new InstructorData
+            {
+                Id = request.Id,
+                FullName = request.FullName,
+                Email = request.Email,
+                Bio = request.Bio,
+                Language = request.Language
+            };
+        }
+
+        public static InstructorData ConvertToInstructorData(this UpdateInstructorDataRequest request)
+        {
+            return new InstructorData
+            {
+                Id = request.Id,
+                FullName = request.FullName,
+                Email = request.Email,
+                Bio = request.Bio,
+                Language = request.Language
             };
         }
     }

@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessLayerImplementation\BasicInfoService.cs" />
+    <Compile Include="BusinessLayerImplementation\InstructorService.cs" />
     <Compile Include="BusinessLayerImplementation\UserService.cs" />
     <Compile Include="DataBaseImplementation\OnCoursesImplementation.BasicInfo.cs" />
     <Compile Include="DataBaseImplementation\OnCoursesImplementation.Courses.cs" />

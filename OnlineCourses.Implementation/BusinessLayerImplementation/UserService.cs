@@ -3,12 +3,6 @@ using OnlineCourses.Interfaces;
 using OnlineCourses.Types.Requests;
 using OnlineCourses.Types.Responses;
 using OnlineCourses.Types.Types;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace OnlineCourses.Implementation.BusinessLayerImplementation
 {
@@ -31,7 +25,7 @@ namespace OnlineCourses.Implementation.BusinessLayerImplementation
 
         public GetUserByIdResponse FetchUserById(GetUserByIdRequest request)
         {
-            _validation.NotValidId(request.UserId);
+            _validation.NotValidId(request.UserId, $"{nameof(request.UserId)}");
 
             var cache = Cache.Get(request.UserId.ToString(), () => _dbService.GetUserById(request));
             return cache;
@@ -53,18 +47,18 @@ namespace OnlineCourses.Implementation.BusinessLayerImplementation
 
         public bool DeleteUser(DeleteUserAccountRequest request)
         {
-            _validation.NotValidId(request.Id);
+            _validation.NotValidId(request.Id, $"{nameof(request.Id)}");
 
             return _dbService.DeleteUserAccount(request);
         }
 
         private void ValidateUserData(UserData request)
         {
-            _validation.NotValidId(request.Id);
+            _validation.NotValidId(request.Id, $"{nameof(request.Id)}");
 
-            _validation.NotValidField(request.FullName, 50);
+            _validation.NotValidField(request.FullName, 50, $"{nameof(request.FullName)}");
 
-            _validation.NotValidField(request.Job, 20);
+            _validation.NotValidField(request.Job, 30, $"{nameof(request.Job)}");
 
             _validation.NotValidEmail(request.Email);
         }
