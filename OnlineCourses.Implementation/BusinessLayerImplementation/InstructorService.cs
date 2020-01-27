@@ -25,7 +25,7 @@ namespace OnlineCourses.Implementation.BusinessLayerImplementation
 
         public GetInstructorByIdResponse FetchInstructorById(GetInstructorByIdRequest request)
         {
-            _validation.NotValidId(request.InstructorId);
+            _validation.NotValidId(request.InstructorId,$"{nameof(request.InstructorId)}");
 
             var cache = Cache.Get(request.InstructorId.ToString(), () => _dbService.GetInstructorById(request));
             return cache;
@@ -47,15 +47,15 @@ namespace OnlineCourses.Implementation.BusinessLayerImplementation
 
         private void ValidateUserData(InstructorData request)
         {
-            _validation.NotValidId(request.Id);
+            _validation.NotValidId(request.Id, $"{nameof(request.Id)}");
 
-            _validation.NotValidField(request.FullName, 50);
+            _validation.NotValidField(request.FullName, 50, $"{nameof(request.FullName)}");
 
             _validation.NotValidEmail(request.Email);
 
-            _validation.NotValidField(request.Bio, 256);
+            _validation.NotValidField(request.Bio, 256, $"{nameof(request.Bio)}");
 
-            _validation.NotValidField(request.Language, 10);
+            _validation.NotValidField(request.Language, 10, $"{nameof(request.Language)}");
 
         }
     }

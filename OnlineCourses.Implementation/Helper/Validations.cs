@@ -1,28 +1,24 @@
 ﻿using OnlineCourses.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace OnlineCourses.Implementation.Helper
 {
     public class Validations : IValidation
     {
-        public void NotValidId(int id)
+        public void NotValidId(int id,string name)
         {
-            if (IntIdIsInValid(id))//ok na thn kanw test
+            if (IntIdIsInValid(id))
             {
-                throw new Exception($"The Id: {id} is not valid!");
+                throw new Exception($"The {name} : {id} is not valid!");
             }
         }
 
-        public void NotValidField(string input,int lenght)//ok na to tsekarw
+        public void NotValidField(string input,int lenght, string fieldName)
         {
             if(CheckStringIsInValid(input,lenght))
             {
-                throw new Exception($"The Field: {input} is not valid!");
+                throw new Exception($"The {fieldName}: {input} is not valid!");
             }
         }
 
@@ -34,7 +30,7 @@ namespace OnlineCourses.Implementation.Helper
             }
         }
 
-        private bool IntIdIsInValid(int id)//ok na thn kanw test
+        private bool IntIdIsInValid(int id)
         {
             if (id < 0 || id > int.MaxValue)
             {
@@ -43,7 +39,7 @@ namespace OnlineCourses.Implementation.Helper
             return false;
         }
 
-        private bool CheckStringIsInValid(string input, int maxLength)//na thn kanw test
+        private bool CheckStringIsInValid(string input, int maxLength)
         {
             if (string.IsNullOrWhiteSpace(input) || input.Length > maxLength)
             {
