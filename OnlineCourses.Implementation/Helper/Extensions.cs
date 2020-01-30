@@ -82,5 +82,31 @@ namespace OnlineCourses.Implementation.Helper
                 Language = request.Language
             };
         }
+
+        public static CourseValidationData ConvertToCourseValidationData(this AddNewCourseRequest request)
+        {
+            return new CourseValidationData
+            {
+                Id = request.Id,
+                Title = request.Title,
+                CategoryId = request.CategoryId,
+                Description = request.Description,
+                FrameworkId = request.FrameworkId,
+                InstructorId = request.InstructorId,
+                Price = request.Price,
+                Rating = request.Rating
+            };
+        }
+
+        public static CourseValidationData ConvertToCourseValidationData(this UpdateCourseRequest request)
+        {
+            return new CourseValidationData
+            {
+                Id = request.Id,
+                Title = request.Title,
+                Description = request.Description,
+                Price = request.Price
+            };
+        }
     }
 }

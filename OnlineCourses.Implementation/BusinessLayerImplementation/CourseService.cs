@@ -2,6 +2,7 @@
 using OnlineCourses.Interfaces;
 using OnlineCourses.Types.Requests;
 using OnlineCourses.Types.Responses;
+using OnlineCourses.Types.Types;
 using System;
 
 namespace OnlineCourses.Implementation.BusinessLayerImplementation
@@ -25,30 +26,31 @@ namespace OnlineCourses.Implementation.BusinessLayerImplementation
 
         public bool AddCourse(AddNewCourseRequest request)
         {
-            ValidateCourse();//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            ValidateNewCourse(request);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             return _dbService.AddNewCourse(request);
         }
 
         public bool UpdateCourse(UpdateCourseRequest request)
         {
-            ValidateCourse();//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            ValidateUpdatedCourse(request);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             return _dbService.UpdateCourse(request);
         }
 
         public GetCoursesResponse SearchCourses(SearchCoursesRequest request)
         {
+            //na kanw elegxo???mallon mono sta oria
             return _dbService.SearchCourses(request);
         }
 
         public bool Comment(AddCommentRequest request)
         {
-            ValidateComment();//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            ValidateComment(request);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             return _dbService.AddComment(request);
         }
 
         public bool EnrollCourse(EnrollCourseRequest request)
         {
-            ValidateComment();//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            ValidateEnrollment(request);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             return _dbService.EnrollCourse(request);
         }
 
@@ -73,14 +75,50 @@ namespace OnlineCourses.Implementation.BusinessLayerImplementation
             return _dbService.GetEnrollsByStudent(request);
         }
 
-        private void ValidateCourse()
+        private void ValidateNewCourse(AddNewCourseRequest request)
         {
-            throw new NotImplementedException();
+            _validation.NotValidId(request.Id, $"{nameof(request.Id)}");
+
+            _validation.NotValidId(request.InstructorId, $"{nameof(request.Id)}");
+
+            _validation.NotValidField(request.FrameworkId, 3, $"{nameof(request.FrameworkId)}");//check 3
+
+            _validation.NotValidField(request.CategoryId, 3, $"{nameof(request.CategoryId)}");//check 3
+
+            _validation.NotValidField(request.Title, 20, $"{nameof(request.Title)}");//check 20
+
+            _validation.NotValidField(request.Title, 20, $"{nameof(request.Description)}");//check 20
+
+            //must implement a check also rate and price
         }
 
-        private void ValidateComment()
+        private void ValidateUpdatedCourse(UpdateCourseRequest request)
         {
-            throw new NotImplementedException();
+            _validation.NotValidId(request.Id, $"{nameof(request.Id)}");
+
+            _validation.NotValidField(request.Title, 20, $"{nameof(request.Title)}");//check 20
+
+            _validation.NotValidField(request.Title, 20, $"{nameof(request.Description)}");//check 20
+
+            //must implement also a ckeck decimal price
+        }
+
+        private void ValidateComment(AddCommentRequest request)
+        {
+            _validation.NotValidId(request.UserId, $"{nameof(request.UserId)}");
+
+            _validation.NotValidId(request.CourseId, $"{nameof(request.CourseId)}");
+
+            _validation.NotValidField(request.Comment, 50, $"{nameof(request.Comment)}");//na tsekarw ksana to 50
+        }
+
+        private void ValidateEnrollment(EnrollCourseRequest request)
+        {
+            _validation.NotValidId(request.UserId, $"{nameof(request.UserId)}");
+
+            _validation.NotValidId(request.CourseId, $"{nameof(request.CourseId)}");
+
+            _validation.NotValidField(request.Comment, 50, $"{nameof(request.Comment)}");//na tsekarw ksana to 50
         }
 
     }
