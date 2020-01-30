@@ -81,13 +81,13 @@ namespace OnlineCourses.Implementation.BusinessLayerImplementation
 
             _validation.NotValidId(request.InstructorId, $"{nameof(request.Id)}");
 
-            _validation.NotValidField(request.FrameworkId, 3, $"{nameof(request.FrameworkId)}");//check 3
+            _validation.NotValidField(request.FrameworkId, 5, $"{nameof(request.FrameworkId)}");
 
-            _validation.NotValidField(request.CategoryId, 3, $"{nameof(request.CategoryId)}");//check 3
+            _validation.NotValidField(request.CategoryId, 3, $"{nameof(request.CategoryId)}");
 
-            _validation.NotValidField(request.Title, 20, $"{nameof(request.Title)}");//check 20
+            _validation.NotValidField(request.Title, 100, $"{nameof(request.Title)}");
 
-            _validation.NotValidField(request.Title, 20, $"{nameof(request.Description)}");//check 20
+            _validation.NotValidField(request.Description, 500, $"{nameof(request.Description)}");
 
             //must implement a check also rate and price
         }
@@ -96,9 +96,9 @@ namespace OnlineCourses.Implementation.BusinessLayerImplementation
         {
             _validation.NotValidId(request.Id, $"{nameof(request.Id)}");
 
-            _validation.NotValidField(request.Title, 20, $"{nameof(request.Title)}");//check 20
+            _validation.NotValidField(request.Title, 100, $"{nameof(request.Title)}");
 
-            _validation.NotValidField(request.Title, 20, $"{nameof(request.Description)}");//check 20
+            _validation.NotValidField(request.Description, 500, $"{nameof(request.Description)}");
 
             //must implement also a ckeck decimal price
         }
@@ -109,7 +109,7 @@ namespace OnlineCourses.Implementation.BusinessLayerImplementation
 
             _validation.NotValidId(request.CourseId, $"{nameof(request.CourseId)}");
 
-            _validation.NotValidField(request.Comment, 50, $"{nameof(request.Comment)}");//na tsekarw ksana to 50
+            _validation.NotValidField(request.Comment, 500, $"{nameof(request.Comment)}");
         }
 
         private void ValidateEnrollment(EnrollCourseRequest request)
@@ -118,7 +118,7 @@ namespace OnlineCourses.Implementation.BusinessLayerImplementation
 
             _validation.NotValidId(request.CourseId, $"{nameof(request.CourseId)}");
 
-            _validation.NotValidField(request.Comment, 50, $"{nameof(request.Comment)}");//na tsekarw ksana to 50
+            _validation.NotValidField(request.Comment, 500, $"{nameof(request.Comment)}");
         }
 
     }

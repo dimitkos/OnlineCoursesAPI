@@ -41,7 +41,7 @@ namespace OnlineCourses.Implementation.Helper
 
         private bool CheckStringIsInValid(string input, int maxLength)
         {
-            if (string.IsNullOrWhiteSpace(input) || input.Length > maxLength)
+            if (string.IsNullOrWhiteSpace(input) || input.Length >= maxLength)
             {
                 return true;
             }
