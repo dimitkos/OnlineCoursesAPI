@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="IBasicInfo.cs" />
     <Compile Include="ICourse.cs" />
+    <Compile Include="ICsv.cs" />
     <Compile Include="IInstructor.cs" />
     <Compile Include="IService.cs" />
     <Compile Include="IUser.cs" />
