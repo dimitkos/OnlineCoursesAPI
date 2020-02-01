@@ -3,7 +3,7 @@
 namespace OnlineCourses.Types.Requests
 {
     [DataContract]
-    public class GetUserByIdRequest
+    public class GetEnrollsByUserRequest
     {
         [DataMember(Name = "userId")]
         public int UserId { get; set; }

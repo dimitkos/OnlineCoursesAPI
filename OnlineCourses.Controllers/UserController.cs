@@ -1,23 +1,17 @@
 ﻿using OnlineCourses.Interfaces;
-using OnlineCourses.Types.DbTypes;
 using OnlineCourses.Types.Requests;
 using OnlineCourses.Types.Responses;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace OnlineCourses.Controllers
 {
     public class UserController :ApiController
     {
-        private readonly IService service;
+        private readonly IUser service;
 
-        public UserController(IService service)
+        public UserController(IUser service)
         {
             this.service = service;
         }
@@ -26,7 +20,7 @@ namespace OnlineCourses.Controllers
         [ActionName("getAllUsers")]
         public HttpResponseMessage GetAllUsers()
         {
-            var response = service.GetUsers();
+            var response = service.FetchUsers();
             if(response.Users != null)
             {
                 return Request.CreateResponse<GetUsersResponse>(HttpStatusCode.OK, response);
@@ -41,7 +35,7 @@ namespace OnlineCourses.Controllers
         [ActionName("getUserById")]
         public HttpResponseMessage GetUserById([FromBody]GetUserByIdRequest request)
         {
-            var response = service.GetUserById(request);
+            var response = service.FetchUserById(request);
             if (response.User != null)
             {
                 return Request.CreateResponse<GetUserByIdResponse>(HttpStatusCode.OK, response);
@@ -56,7 +50,7 @@ namespace OnlineCourses.Controllers
         [ActionName("createUser")]
         public HttpResponseMessage CreateUser([FromBody]AddNewUserRequest request)
         {
-            var response = service.AddNewUser(request);
+            var response = service.CreateNewUser(request);
 
             if(response)
             {
@@ -72,9 +66,9 @@ namespace OnlineCourses.Controllers
         [ActionName("updateUserData")]
         public HttpResponseMessage UpdateUserData([FromBody]UpdateUserDataRequest request)
         {
-            var response = service.UpdateUserData(request);
+            var response = service.UpdateUser(request);
 
-            if(response)
+            if (response)
             {
                 return Request.CreateResponse<bool>(HttpStatusCode.OK, response);
             }
@@ -88,7 +82,7 @@ namespace OnlineCourses.Controllers
         [ActionName("deleteUserAccount")]
         public HttpResponseMessage DeleteUserAccount([FromBody]DeleteUserAccountRequest request)
         {
-            var response = service.DeleteUserAccount(request);
+            var response = service.DeleteUser(request);
 
             if (response)
             {

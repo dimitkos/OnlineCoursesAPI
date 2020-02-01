@@ -39,6 +39,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,13 +48,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessLayerImplementation\BasicInfoService.cs" />
+    <Compile Include="BusinessLayerImplementation\CourseService.cs" />
+    <Compile Include="BusinessLayerImplementation\InstructorService.cs" />
+    <Compile Include="BusinessLayerImplementation\UserService.cs" />
     <Compile Include="DataBaseImplementation\OnCoursesImplementation.BasicInfo.cs" />
     <Compile Include="DataBaseImplementation\OnCoursesImplementation.Courses.cs" />
     <Compile Include="DataBaseImplementation\OnCoursesImplementation.cs" />
     <Compile Include="DataBaseImplementation\OnCoursesImplementation.Instructors.cs" />
     <Compile Include="DataBaseImplementation\OnCoursesImplementation.Users.cs" />
     <Compile Include="DbImplementation.cs" />
+    <Compile Include="Helper\Cache.cs" />
     <Compile Include="Helper\Extensions.cs" />
+    <Compile Include="Helper\Validations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

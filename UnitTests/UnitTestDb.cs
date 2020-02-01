@@ -8,23 +8,28 @@ using OnlineCourses.Types.Requests;
 namespace UnitTests
 {
     [TestClass]
-    public class UnitTest1
+    public class UnitTestDb
     {
-        [TestMethod]
-        public void GetUsers()
+        private OnCoursesImplementation service;
+
+        public UnitTestDb()
         {
-            var service = new OnCoursesImplementation();
-
-            var res = service.GetUsers();
-
-            Xunit.Assert.True(res.Users.ToList().Count == 3);//prosthesa enan arra prepei na to allaksw kapws na ginetai aytomata
+            service = new OnCoursesImplementation();
         }
 
         [TestMethod]
+        [TestCategory("User")]
+        public void GetUsers()
+        {
+            var res = service.GetUsers();
+
+            Xunit.Assert.True(res.Users.ToList().Count > 0);
+        }
+
+        [TestMethod]
+        [TestCategory("User")]
         public void GetUserById()
         {
-            var service = new OnCoursesImplementation();
-
             var request = new GetUserByIdRequest()
             {
                 UserId = 1
@@ -37,9 +42,9 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("User")]
         public void GetUserByIdUnhappy()
         {
-            var service = new OnCoursesImplementation();
             var request = new GetUserByIdRequest()
             {
                 UserId = 100
@@ -51,40 +56,36 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("Instructor")]
         public void GetInstructors()
         {
-            var service = new OnCoursesImplementation();
-
             var res = service.GetInstructors();
 
-            Xunit.Assert.True(res.Instructors.ToList().Count == 4);
+            Xunit.Assert.True(res.Instructors.ToList().Count > 0);
         }
 
         [TestMethod]
+        [TestCategory("BasicInfo")]
         public void GetFrameworks()
         {
-            var service = new OnCoursesImplementation();
-
             var res = service.GetFrameworks();
 
-            Xunit.Assert.True(res.Frameworks.ToList().Count == 8);
+            Xunit.Assert.True(res.Frameworks.ToList().Count > 0);
         }
 
         [TestMethod]
+        [TestCategory("BasicInfo")]
         public void GetCategories()
         {
-            var service = new OnCoursesImplementation();
-
             var res = service.GetCategories();
 
-            Xunit.Assert.True(res.Categories.ToList().Count == 6);
+            Xunit.Assert.True(res.Categories.ToList().Count > 0);
         }
 
         [TestMethod]
+        [TestCategory("Instructor")]
         public void GetInstructorById()
         {
-            var service = new OnCoursesImplementation();
-
             var request = new GetInstructorByIdRequest()
             {
                 InstructorId = 1
@@ -98,9 +99,9 @@ namespace UnitTests
 
 
         [TestMethod]
+        [TestCategory("Instructor")]
         public void GetInstructorByIdUnhappy()
         {
-            var service = new OnCoursesImplementation();
             var request = new GetInstructorByIdRequest()
             {
                 InstructorId = 100
@@ -112,9 +113,9 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("User")]
         public void AddNewUser()
         {
-            var service = new OnCoursesImplementation();
             var request = new AddNewUserRequest()
             {
                 Id = 1000,
@@ -127,13 +128,12 @@ namespace UnitTests
             var res = service.AddNewUser(request);
 
             Xunit.Assert.True(res);
-            //efoson prosthesa enan twra ayton prepei na ton svinw
         }
 
         [TestMethod]
+        [TestCategory("User")]
         public void AddNewUserUnHappy()
         {
-            var service = new OnCoursesImplementation();
             var request = new AddNewUserRequest()
             {
                 Id = 1,
@@ -149,9 +149,9 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("User")]
         public void UpdateUserData()
         {
-            var service = new OnCoursesImplementation();
             var request = new UpdateUserDataRequest()
             {
                 Id = 111,
@@ -166,9 +166,9 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("User")]
         public void UpdateUserDataWithoutExistingId()
         {
-            var service = new OnCoursesImplementation();
             var request = new UpdateUserDataRequest()
             {
                 Id = 11,
@@ -182,9 +182,9 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("User")]
         public void DeleteUser()
         {
-            var service = new OnCoursesImplementation();
             var request = new DeleteUserAccountRequest
             {
                 Id = 1000
@@ -196,9 +196,9 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("Instructor")]
         public void CreateInstructorAccount()
         {
-            var service = new OnCoursesImplementation();
             var request = new CreateInstructorAccountRequest
             {
                 Id =12,
@@ -214,9 +214,9 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("Instructor")]
         public void CreateInstructorAccountUnHappy()
         {
-            var service = new OnCoursesImplementation();
             var request = new CreateInstructorAccountRequest
             {
                 Id = 12,
@@ -231,9 +231,9 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("Instructor")]
         public void UpdateInstructorData()
         {
-            var service = new OnCoursesImplementation();
             var request = new UpdateInstructorDataRequest()
             {
                 Id = 12,
@@ -249,9 +249,9 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("Instructor")]
         public void UpdateInstructorDataUnHappy()
         {
-            var service = new OnCoursesImplementation();
             var request = new UpdateInstructorDataRequest
             {
                 Id = 1112,
@@ -266,21 +266,19 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("Courses")]
         public void GetAllCourses()
         {
-            var service = new OnCoursesImplementation();
-
             var res = service.GetAllCourses();
 
             Xunit.Assert.NotEmpty(res.Courses);
-            Xunit.Assert.True(res.Courses.ToList().Count == 2);
+            Xunit.Assert.True(res.Courses.ToList().Count > 0);
         }
 
         [TestMethod]
+        [TestCategory("Courses")]
         public void AddNewCourse()
         {
-            var service = new OnCoursesImplementation();
-
             var request = new AddNewCourseRequest
             {
                 Id = 444,
@@ -298,10 +296,9 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("Courses")]
         public void AddNewCourseWithExistingId()
         {
-            var service = new OnCoursesImplementation();
-
             var request = new AddNewCourseRequest
             {
                 Id = 444,
@@ -319,9 +316,9 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("Courses")]
         public void UpdateCourse()
         {
-            var service = new OnCoursesImplementation();
             var request = new UpdateCourseRequest
             {
                 Id = 444,
@@ -336,9 +333,9 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("Courses")]
         public void UpdateCourseWithNoExistingId()
         {
-            var service = new OnCoursesImplementation();
             var request = new UpdateCourseRequest
             {
                 Id = 1444,
@@ -352,10 +349,9 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("Courses")]
         public void SearchCoursesByTitle()
         {
-            var service = new OnCoursesImplementation();
-
             var request = new SearchCoursesRequest
             {
                 Title = "ch",
@@ -363,14 +359,13 @@ namespace UnitTests
 
             var res = service.SearchCourses(request);
 
-            Xunit.Assert.True(res.Courses.ToList().Count>0);
+            Xunit.Assert.True(res.Courses.ToList().Count > 0);
         }
 
         [TestMethod]
+        [TestCategory("Courses")]
         public void SearchCoursesByFrameworkName()
         {
-            var service = new OnCoursesImplementation();
-
             var request = new SearchCoursesRequest
             {
                 FrameworkName = ".NET",
@@ -382,10 +377,9 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("Courses")]
         public void SearchCoursesByCategoryName()
         {
-            var service = new OnCoursesImplementation();
-
             var request = new SearchCoursesRequest
             {
                 CategoryName = "Software Development",
@@ -397,10 +391,9 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("Courses")]
         public void SearchCoursesByInstructorName()
         {
-            var service = new OnCoursesImplementation();
-
             var request = new SearchCoursesRequest
             {
                 InstructorName = "Marc James",
@@ -412,10 +405,9 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("Courses")]
         public void SearchCoursesByPrice()
         {
-            var service = new OnCoursesImplementation();
-
             var request = new SearchCoursesRequest
             {
                 UpPrice =25.0m ,
@@ -428,10 +420,9 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("Courses")]
         public void SearchCoursesByRating()
         {
-            var service = new OnCoursesImplementation();
-
             var request = new SearchCoursesRequest
             {
                 UpRating = 5.0m,
@@ -444,10 +435,9 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("User")]
         public void EnrollCourse()
         {
-            var service = new OnCoursesImplementation();
-
             var request = new EnrollCourseRequest
             {
                 UserId = 1,
@@ -461,10 +451,9 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("Courses")]
         public void GetCoursesByInstructor()
         {
-            var service = new OnCoursesImplementation();
-
             var request = new GetCoursesByInstructorRequest
             {
                 InstructorId = 2,
@@ -473,7 +462,52 @@ namespace UnitTests
             var res = service.GetCoursesByInstructor(request);
 
             Xunit.Assert.NotNull(res.Instructor);
-            Xunit.Assert.True(res.Courses.ToList().Count >0);
+            Xunit.Assert.True(res.Courses.ToList().Count > 0);
+        }
+
+        [TestMethod]
+        [TestCategory("Courses")]
+        public void AddComment()
+        {
+            var request = new AddCommentRequest
+            {
+                UserId = 1,
+                CourseId = 1,
+                Comment = "Excellent course!!"
+            };
+
+            var res = service.AddComment(request);
+
+            Xunit.Assert.True(res);
+        }
+
+        [TestMethod]
+        [TestCategory("Courses")]
+        public void GetAllCommentsByCourse()
+        {
+            var request = new CourseCommentsRequest
+            {
+                CourseId = 1,
+            };
+
+            var res = service.GetCommentsByCourse(request);
+
+            Xunit.Assert.True(res.CommentDetails.Count > 0);
+        }
+
+        [TestMethod]
+        [TestCategory("Courses")]
+        public void GetCoursesByUser()
+        {
+            var request = new GetEnrollsByUserRequest
+            {
+                UserId = 1,
+            };
+
+            var res = service.GetEnrollsByStudent(request);
+
+            Xunit.Assert.NotNull(res.User);
+            Xunit.Assert.NotNull(res.Courses);
         }
     }
 }

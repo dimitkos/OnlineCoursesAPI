@@ -1,11 +1,5 @@
-﻿using OnlineCourses.Types.DbTypes;
-using OnlineCourses.Types.Requests;
+﻿using OnlineCourses.Types.Requests;
 using OnlineCourses.Types.Responses;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OnlineCourses.Interfaces
 {
@@ -44,5 +38,11 @@ namespace OnlineCourses.Interfaces
         bool EnrollCourse(EnrollCourseRequest request);
 
         GetCoursesByInstructorResponse GetCoursesByInstructor(GetCoursesByInstructorRequest request);
+
+        bool AddComment(AddCommentRequest request);
+
+        CourseCommentsResponse GetCommentsByCourse(CourseCommentsRequest request);
+
+        GetEnrollsByUserResponse GetEnrollsByStudent(GetEnrollsByUserRequest request);
     }
 }

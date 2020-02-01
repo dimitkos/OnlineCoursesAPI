@@ -2,6 +2,7 @@
 using OnlineCourses.Types.DbTypes;
 using OnlineCourses.Types.Requests;
 using OnlineCourses.Types.Responses;
+using OnlineCourses.Types.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -96,10 +97,10 @@ namespace OnlineCourses.Implementation.DataBaseImplementation
 
         public bool EnrollCourse(EnrollCourseRequest request)
         {
-            string sql = @"Insert Into EnrollCourse (UserId,CourseId,Comment) VALUES (@UserId,@CourseId,@Comment)";
+            string sql = @"Insert Into enrolls (UserId,CourseId,Comment) VALUES (@UserId,@CourseId,@Comment)";
 
             int result;
-            var parameters = new { request.UserId, request.CourseId};
+            var parameters = new { request.UserId, request.CourseId, request.Comment};
 
             using (var con = GetSqlConnection())
             {
@@ -132,6 +133,71 @@ namespace OnlineCourses.Implementation.DataBaseImplementation
                 return new GetCoursesByInstructorResponse
                 {
                     Instructor = instructors,
+                    Courses = courses.ToList()
+                };
+            }
+        }
+
+        public bool AddComment(AddCommentRequest request)
+        {
+            string sql = @"UPDATE enrolls SET Comment = @Comment WHERE UserId = @UserId AND CourseId = @CourseId";
+            int result;
+            var parameters = new { request.Comment, request.UserId, request.CourseId };
+
+            using (var con = GetSqlConnection())
+            {
+                result = con.Execute(sql, parameters);
+            }
+            return result == 1;
+        }
+
+        public CourseCommentsResponse GetCommentsByCourse(CourseCommentsRequest request)
+        {
+            string sql = @"Select us.fullname,en.comment From enrolls as en
+                        inner join users as us
+                        on en.userId = us.id
+                        WHERE en.CourseId = @CourseId";
+            var parameters = new { request.CourseId };
+            using (var con = GetSqlConnection())
+            {
+                var response = con.Query<CommentDetails>(sql,parameters).ToList();
+
+                return new CourseCommentsResponse
+                {
+                    CommentDetails = response
+                };
+            }
+            
+        }
+
+        public GetEnrollsByUserResponse GetEnrollsByStudent(GetEnrollsByUserRequest request)
+        {
+            string sqlcourse = @"select cr.id,cr.title,cr.description,cr.rating,cr.price,fr.name as frameworkName,cat.name as categoryName,ins.fullname as instructorName
+                                from users as us 
+                                inner join enrolls as en
+                                on us.id = en.userId
+                                inner join course as cr
+                                on en.courseId = cr.id
+                                inner join category as cat
+                                on cr.categoryId = cat.categoryId
+                                inner join framework as fr
+                                on cr.frameworkId = fr.frameworkId
+                                inner join instructor as ins
+                                on cr.instructorId = ins.id
+                                where us.id =@id";
+            string sqlUser = @"select * from users where id=@id";
+
+            var parameters = new { id = request.UserId };
+
+            using (var con = GetSqlConnection())
+            {
+                var courses = con.Query<CourseResponse>(sqlcourse, parameters);//course or courseresponse????
+                var user = con.Query<Users>(sqlUser, parameters).FirstOrDefault();
+
+
+                return new GetEnrollsByUserResponse
+                {
+                    User = user,
                     Courses = courses.ToList()
                 };
             }

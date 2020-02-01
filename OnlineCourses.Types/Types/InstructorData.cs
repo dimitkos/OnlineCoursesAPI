@@ -1,9 +1,9 @@
 ﻿using System.Runtime.Serialization;
 
-namespace OnlineCourses.Types.Requests
+namespace OnlineCourses.Types.Types
 {
     [DataContract]
-    public class CreateInstructorAccountRequest
+    public class InstructorData
     {
         [DataMember(Name = "id")]
         public int Id { get; set; }

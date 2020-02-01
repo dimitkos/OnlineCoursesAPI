@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace OnlineCourses.Types.Requests
+namespace OnlineCourses.Types.Types
 {
     [DataContract]
-    public class AddNewUserRequest
+    public class UserData
     {
         [DataMember(Name = "id")]
         public int Id { get; set; }
@@ -15,14 +19,7 @@ namespace OnlineCourses.Types.Requests
         [DataMember(Name = "email")]
         public string Email { get; set; }
 
-        [DataMember(Name = "gender")]
-        public bool Gender { get; set; }
-
         [DataMember(Name = "job")]
         public string Job { get; set; }
-
-        [DataMember(Name = "registerDate")]
-        public DateTime RegisterDate { get; set; }
-
     }
 }

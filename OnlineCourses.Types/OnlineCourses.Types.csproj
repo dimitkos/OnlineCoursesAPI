@@ -51,27 +51,36 @@
     <Compile Include="DbTypes\Instructor.cs" />
     <Compile Include="DbTypes\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Requests\AddCommentRequest.cs" />
     <Compile Include="Requests\AddNewCourseRequest.cs" />
     <Compile Include="Requests\AddNewUserRequest.cs" />
+    <Compile Include="Requests\CourseCommentsRequest.cs" />
     <Compile Include="Requests\CreateInstructorAccountRequest.cs" />
     <Compile Include="Requests\DeleteUserAccountRequest.cs" />
     <Compile Include="Requests\EnrollCourseRequest.cs" />
     <Compile Include="Requests\GetCoursesByInstructorRequest.cs" />
+    <Compile Include="Requests\GetEnrollsByUserRequest.cs" />
     <Compile Include="Requests\GetInstructorByIdRequest.cs" />
     <Compile Include="Requests\GetUserByIdRequest.cs" />
     <Compile Include="Requests\SearchCoursesRequest.cs" />
     <Compile Include="Requests\UpdateCourseRequest.cs" />
     <Compile Include="Requests\UpdateInstructorDataRequest.cs" />
     <Compile Include="Requests\UpdateUserDataRequest.cs" />
+    <Compile Include="Responses\CourseCommentsResponse.cs" />
     <Compile Include="Responses\CourseResponse.cs" />
     <Compile Include="Responses\GetCategoriesResponse.cs" />
     <Compile Include="Responses\GetCoursesByInstructorResponse.cs" />
     <Compile Include="Responses\GetCoursesResponse.cs" />
+    <Compile Include="Responses\GetEnrollsByUserResponse.cs" />
     <Compile Include="Responses\GetFrameworksResponse.cs" />
     <Compile Include="Responses\GetInstructorByIdResponse.cs" />
     <Compile Include="Responses\GetInstructorsResponse.cs" />
     <Compile Include="Responses\GetUserByIdResponse.cs" />
     <Compile Include="Responses\GetUsersResponse.cs" />
+    <Compile Include="Types\CommentDetails.cs" />
+    <Compile Include="Types\CourseValidationData.cs" />
+    <Compile Include="Types\InstructorData.cs" />
+    <Compile Include="Types\UserData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
