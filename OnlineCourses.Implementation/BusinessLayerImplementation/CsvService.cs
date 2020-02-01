@@ -1,12 +1,10 @@
-﻿using CsvHelper;
+﻿using OnlineCourses.Implementation.Helper;
 using OnlineCourses.Interfaces;
 using OnlineCourses.Types.DbTypes;
-using System.Collections;
-using System.IO;
+using OnlineCourses.Types.Responses;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
 
 namespace OnlineCourses.Implementation.BusinessLayerImplementation
 {
@@ -19,68 +17,45 @@ namespace OnlineCourses.Implementation.BusinessLayerImplementation
             _dbService = dbService;
         }
 
-        public HttpResponseMessage GetCsv()
+        public HttpResponseMessage GetUsersCsv()
         {
             var data = _dbService.GetUsers();
 
-            using (var mem = new MemoryStream())
-            {
-                using (var writer = new StreamWriter(mem))
-                {
-                    using (var csvWriter = new CsvWriter(writer))
-                    {
-                        csvWriter.Configuration.Delimiter = ";";
-                        csvWriter.Configuration.HasHeaderRecord = true;
+            var result = GenericCsv<Users>.GenerateCsv(data.Users);
 
-                        csvWriter.WriteHeader<Users>();
+            var response = SetResponseMessage(result, "Users.csv");
 
-                        csvWriter.NextRecord();
-
-                        csvWriter.WriteRecords(data.Users);
-
-                        writer.Flush();
-                        var result = Encoding.UTF8.GetString(mem.ToArray());
-
-                        var response = SetResponseMessage(result);
-                        return response;
-                    }
-                }
-            }            
+            return response;
         }
 
-        //private string GenerateCsv(IEnumerable<T> enumerable)
-        //{
-        //    using (var mem = new MemoryStream())
-        //    {
-        //        using (var writer = new StreamWriter(mem))
-        //        {
-        //            using (var csvWriter = new CsvWriter(writer))
-        //            {
-        //                csvWriter.Configuration.Delimiter = ";";
-        //                csvWriter.Configuration.HasHeaderRecord = true;
+        public HttpResponseMessage GetInctructorsCsv()
+        {
+            var data = _dbService.GetInstructors();
 
-        //                csvWriter.WriteHeader<Users>();
+            var result = GenericCsv<Instructor>.GenerateCsv(data.Instructors);
 
-        //                csvWriter.NextRecord();
+            var response = SetResponseMessage(result, "Instructors.csv");
 
-        //                csvWriter.WriteRecords(data.Users);
+            return response;
+        }
 
-        //                writer.Flush();
-        //                var result = Encoding.UTF8.GetString(mem.ToArray());
+        public HttpResponseMessage GetCoursesCsv()
+        {
+            var data = _dbService.GetAllCourses();
 
-        //                var response = SetResponseMessage(result);
-        //                return response;
-        //            }
-        //        }
-        //    }
-        //}
+            var result = GenericCsv<CourseResponse>.GenerateCsv(data.Courses);
 
-        private HttpResponseMessage SetResponseMessage(string result)
+            var response = SetResponseMessage(result, "Courses.csv");
+
+            return response;
+        }
+
+        private HttpResponseMessage SetResponseMessage(string result, string fileName)
         {
             HttpResponseMessage csvFile = new HttpResponseMessage(HttpStatusCode.OK);
             csvFile.Content = new StringContent(result);
             csvFile.Content.Headers.ContentType = new MediaTypeHeaderValue("text/csv");
-            csvFile.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment") { FileName = "Export.csv" };
+            csvFile.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment") { FileName = $"{fileName}" };
             return csvFile;
         }
     }

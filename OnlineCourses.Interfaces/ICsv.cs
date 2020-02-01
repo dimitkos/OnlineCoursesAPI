@@ -4,6 +4,10 @@ namespace OnlineCourses.Interfaces
 {
     public interface ICsv
     {
-        HttpResponseMessage GetCsv();
+        HttpResponseMessage GetUsersCsv();
+
+        HttpResponseMessage GetInctructorsCsv();
+
+        HttpResponseMessage GetCoursesCsv();
     }
 }

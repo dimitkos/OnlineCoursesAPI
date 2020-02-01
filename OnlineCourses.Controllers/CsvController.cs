@@ -15,9 +15,27 @@ namespace OnlineCourses.Controllers
 
         [HttpGet]
         [ActionName("getCsvUsers")]
-        public HttpResponseMessage GetCsv()
+        public HttpResponseMessage GetCsvUsers()
         {
-            var response = service.GetCsv();
+            var response = service.GetUsersCsv();
+
+            return response;
+        }
+
+        [HttpGet]
+        [ActionName("getCsvInstructors")]
+        public HttpResponseMessage GetCsvInstructors()
+        {
+            var response = service.GetInctructorsCsv();
+
+            return response;
+        }
+
+        [HttpGet]
+        [ActionName("getCsvCourses")]
+        public HttpResponseMessage GetCsvCourses()
+        {
+            var response = service.GetCoursesCsv();
 
             return response;
         }
