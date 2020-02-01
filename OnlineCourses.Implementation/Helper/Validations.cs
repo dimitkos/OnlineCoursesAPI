@@ -22,12 +22,46 @@ namespace OnlineCourses.Implementation.Helper
             }
         }
 
+        public void NotValidRating(decimal number, string fieldName)
+        {
+            if(CheckRatingIsInValid(number))
+            {
+                throw new Exception($"The {fieldName}: {number} is not valid!");
+            }
+        }
+
+        public void NotValidPrice(decimal price, string fieldName)
+        {
+            if (CheckPriceIsInValid(price))
+            {
+                throw new Exception($"The {fieldName}: {price} is not valid!");
+            }
+        }
+
         public void NotValidEmail(string email)
         {
             if(EmailIsInValid(email))
             {
                 throw new Exception($" Email: {email} is not valid!");
             }
+        }
+
+        private bool CheckPriceIsInValid(decimal price)
+        {
+            if (price < 0 || price > 120 )
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private bool CheckRatingIsInValid(decimal number)
+        {
+            if(number < 0 || number > 5)
+            {
+                return true;
+            }
+            return false;
         }
 
         private bool IntIdIsInValid(int id)
@@ -41,7 +75,7 @@ namespace OnlineCourses.Implementation.Helper
 
         private bool CheckStringIsInValid(string input, int maxLength)
         {
-            if (string.IsNullOrWhiteSpace(input) || input.Length >= maxLength)
+            if (string.IsNullOrWhiteSpace(input) || input.Length > maxLength)
             {
                 return true;
             }

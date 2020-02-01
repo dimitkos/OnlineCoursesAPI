@@ -1,9 +1,8 @@
-﻿using OnlineCourses.Implementation.Helper;
+﻿using System;
+using OnlineCourses.Implementation.Helper;
 using OnlineCourses.Interfaces;
 using OnlineCourses.Types.Requests;
 using OnlineCourses.Types.Responses;
-using OnlineCourses.Types.Types;
-using System;
 
 namespace OnlineCourses.Implementation.BusinessLayerImplementation
 {
@@ -26,31 +25,30 @@ namespace OnlineCourses.Implementation.BusinessLayerImplementation
 
         public bool AddCourse(AddNewCourseRequest request)
         {
-            ValidateNewCourse(request);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            ValidateNewCourse(request);
             return _dbService.AddNewCourse(request);
         }
 
         public bool UpdateCourse(UpdateCourseRequest request)
         {
-            ValidateUpdatedCourse(request);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            ValidateUpdatedCourse(request);
             return _dbService.UpdateCourse(request);
         }
 
         public GetCoursesResponse SearchCourses(SearchCoursesRequest request)
         {
-            //na kanw elegxo???mallon mono sta oria
             return _dbService.SearchCourses(request);
         }
 
         public bool Comment(AddCommentRequest request)
         {
-            ValidateComment(request);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            ValidateComment(request);
             return _dbService.AddComment(request);
         }
 
         public bool EnrollCourse(EnrollCourseRequest request)
         {
-            ValidateEnrollment(request);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            ValidateEnrollment(request);
             return _dbService.EnrollCourse(request);
         }
 
@@ -75,6 +73,7 @@ namespace OnlineCourses.Implementation.BusinessLayerImplementation
             return _dbService.GetEnrollsByStudent(request);
         }
 
+        #region private validation methods
         private void ValidateNewCourse(AddNewCourseRequest request)
         {
             _validation.NotValidId(request.Id, $"{nameof(request.Id)}");
@@ -89,7 +88,9 @@ namespace OnlineCourses.Implementation.BusinessLayerImplementation
 
             _validation.NotValidField(request.Description, 500, $"{nameof(request.Description)}");
 
-            //must implement a check also rate and price
+            _validation.NotValidRating(request.Rating, $"{nameof(request.Rating)}");
+
+            _validation.NotValidPrice(request.Price, $"{nameof(request.Price)}");
         }
 
         private void ValidateUpdatedCourse(UpdateCourseRequest request)
@@ -100,7 +101,7 @@ namespace OnlineCourses.Implementation.BusinessLayerImplementation
 
             _validation.NotValidField(request.Description, 500, $"{nameof(request.Description)}");
 
-            //must implement also a ckeck decimal price
+            _validation.NotValidPrice(request.Price, $"{nameof(request.Price)}");
         }
 
         private void ValidateComment(AddCommentRequest request)
@@ -120,6 +121,6 @@ namespace OnlineCourses.Implementation.BusinessLayerImplementation
 
             _validation.NotValidField(request.Comment, 500, $"{nameof(request.Comment)}");
         }
-
+        #endregion
     }
 }
