@@ -33,7 +33,7 @@ namespace OnlineCourses.Controllers
 
         [HttpGet]
         [ActionName("getInstructorById")]
-        public HttpResponseMessage getInstructorById([FromBody]GetInstructorByIdRequest request)
+        public HttpResponseMessage getInstructorById([FromUri]GetInstructorByIdRequest request)
         {
             var response = service.FetchInstructorById(request);
             if (response.Instructor != null)

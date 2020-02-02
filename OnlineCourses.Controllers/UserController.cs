@@ -33,7 +33,7 @@ namespace OnlineCourses.Controllers
 
         [HttpGet]
         [ActionName("getUserById")]
-        public HttpResponseMessage GetUserById([FromBody]GetUserByIdRequest request)
+        public HttpResponseMessage GetUserById([FromUri]GetUserByIdRequest request)
         {
             var response = service.FetchUserById(request);
             if (response.User != null)
