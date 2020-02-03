@@ -4,6 +4,7 @@ using OnlineCourses.Types.Responses;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Description;
 
 namespace OnlineCourses.Controllers
 {
@@ -18,6 +19,7 @@ namespace OnlineCourses.Controllers
 
         [HttpGet]
         [ActionName("getInstructors")]
+        [ResponseType(typeof(GetInstructorsResponse))]
         public HttpResponseMessage GetInstructors()
         {
             var response = service.FetchInstructors();
@@ -33,7 +35,8 @@ namespace OnlineCourses.Controllers
 
         [HttpGet]
         [ActionName("getInstructorById")]
-        public HttpResponseMessage getInstructorById([FromUri]GetInstructorByIdRequest request)
+        [ResponseType(typeof(GetInstructorByIdResponse))]
+        public HttpResponseMessage GetInstructorById([FromUri]GetInstructorByIdRequest request)
         {
             var response = service.FetchInstructorById(request);
             if (response.Instructor != null)
@@ -48,6 +51,7 @@ namespace OnlineCourses.Controllers
 
         [HttpPost]
         [ActionName("createInstructorAccount")]
+        [ResponseType(typeof(bool))]
         public HttpResponseMessage CreateInstructorAccount([FromBody]CreateInstructorAccountRequest request)
         {
             var response = service.CreateNewInstructor(request);
@@ -64,6 +68,7 @@ namespace OnlineCourses.Controllers
 
         [HttpPut]
         [ActionName("updateInstructorData")]
+        [ResponseType(typeof(bool))]
         public HttpResponseMessage UpdateInstructorData([FromBody]UpdateInstructorDataRequest request)
         {
             var response = service.UpdateInstructor(request);
