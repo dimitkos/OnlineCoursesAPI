@@ -4,6 +4,7 @@ using OnlineCourses.Types.Responses;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Description;
 
 namespace OnlineCourses.Controllers
 {
@@ -18,6 +19,7 @@ namespace OnlineCourses.Controllers
 
         [HttpGet]
         [ActionName("getAllUsers")]
+        [ResponseType(typeof(GetUsersResponse))]
         public HttpResponseMessage GetAllUsers()
         {
             var response = service.FetchUsers();
@@ -33,6 +35,7 @@ namespace OnlineCourses.Controllers
 
         [HttpGet]
         [ActionName("getUserById")]
+        [ResponseType(typeof(GetUserByIdResponse))]
         public HttpResponseMessage GetUserById([FromUri]GetUserByIdRequest request)
         {
             var response = service.FetchUserById(request);
@@ -48,6 +51,7 @@ namespace OnlineCourses.Controllers
 
         [HttpPost]
         [ActionName("createUser")]
+        [ResponseType(typeof(bool))]
         public HttpResponseMessage CreateUser([FromBody]AddNewUserRequest request)
         {
             var response = service.CreateNewUser(request);
@@ -64,6 +68,7 @@ namespace OnlineCourses.Controllers
 
         [HttpPut]
         [ActionName("updateUserData")]
+        [ResponseType(typeof(bool))]
         public HttpResponseMessage UpdateUserData([FromBody]UpdateUserDataRequest request)
         {
             var response = service.UpdateUser(request);
@@ -80,6 +85,7 @@ namespace OnlineCourses.Controllers
 
         [HttpDelete]
         [ActionName("deleteUserAccount")]
+        [ResponseType(typeof(bool))]
         public HttpResponseMessage DeleteUserAccount([FromBody]DeleteUserAccountRequest request)
         {
             var response = service.DeleteUser(request);
