@@ -3,6 +3,7 @@ using OnlineCourses.Types.Responses;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Description;
 
 namespace OnlineCourses.Controllers
 {
@@ -18,6 +19,7 @@ namespace OnlineCourses.Controllers
 
         [HttpGet]
         [ActionName("getFrameworks")]
+        [ResponseType(typeof(GetFrameworksResponse))]
         public HttpResponseMessage GetFrameworks()
         {
             var response = service.FetchFrameworks();
@@ -33,6 +35,7 @@ namespace OnlineCourses.Controllers
 
         [HttpGet]
         [ActionName("getCategories")]
+        [ResponseType(typeof(GetCategoriesResponse))]
         public HttpResponseMessage GetCategories()
         {
             var response = service.FetchCategories();
