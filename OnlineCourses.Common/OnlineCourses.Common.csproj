@@ -55,9 +55,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Auditing\AuditHandler.cs" />
     <Compile Include="DBCommon\DatabaseLogging.cs" />
     <Compile Include="ErrorLogging\ExceptionLogging.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Types\Audit.cs" />
     <Compile Include="Types\Error.cs" />
   </ItemGroup>
   <ItemGroup>

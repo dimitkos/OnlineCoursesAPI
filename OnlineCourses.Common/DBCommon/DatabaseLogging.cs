@@ -28,5 +28,16 @@ namespace OnlineCourses.Common.DBCommon
                 con.Execute(sql, parameters);
             }
         }
+
+        public static void Audit(Audit audit)
+        {
+            string sql = @"INSERT INTO Auditing (Id,Host,Headers,StatusCode,RequestBody,RequestedMethod,UserHostAddress,Useragent,AbsoluteUri,RequestType,Time) VALUES (@Id,@Host,@Headers,@StatusCode,@RequestBody,@RequestedMethod,@UserHostAddress,@Useragent,@AbsoluteUri,@RequestType,@Time)";
+            var parameters = new { Id = Guid.NewGuid(), audit.Host, audit.Headers, audit.StatusCode, audit.RequestBody, audit.RequestedMethod, audit.UserHostAddress, audit.Useragent, audit.AbsoluteUri, audit.RequestType, Time = DateTime.Now };
+
+            using (var con = GetSqlConnection())
+            {
+                con.Execute(sql, parameters);
+            }
+        }
     }
 }
