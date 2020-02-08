@@ -1,7 +1,9 @@
-﻿using System;
+﻿using OnlineCourses.Common.ErrorLogging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.ExceptionHandling;
 
 namespace OnlineCourses
 {
@@ -9,6 +11,7 @@ namespace OnlineCourses
     {
         public static void Register(HttpConfiguration config)
         {
+            config.Services.Replace(typeof(IExceptionLogger), new ApiExceptionLogging());
             // Web API configuration and services
 
             // Web API routes
