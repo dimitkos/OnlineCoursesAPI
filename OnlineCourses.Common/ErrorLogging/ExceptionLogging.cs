@@ -1,23 +1,12 @@
-﻿using OnlineCourses.Common.Types;
-using OnlineCourses.Interfaces;
+﻿using OnlineCourses.Common.DBCommon;
+using OnlineCourses.Common.Types;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Http.ExceptionHandling;
 
 namespace OnlineCourses.Common.ErrorLogging
 {
     public class ApiExceptionLogging : ExceptionLogger
     {
-        private readonly IService _service;
-
-        public ApiExceptionLogging(IService service)
-        {
-            _service = service;
-        }
-
         public override void Log(ExceptionLoggerContext context)
         {
             var ex = context.Exception;
@@ -27,7 +16,7 @@ namespace OnlineCourses.Common.ErrorLogging
             var requestMethod = context.Request.Method.ToString();
             var timeUtc = DateTime.Now;
 
-            ApiError apiError = new ApiError
+            Error apiError = new Error
             {
                 Message = logText,
                 RequestUri = requestedURi,
@@ -35,9 +24,14 @@ namespace OnlineCourses.Common.ErrorLogging
                 TimeUtc = DateTime.Now
             };
 
-            //_service.LogError(apiError);
-            // 1. prepei na ftiaksw ton pinaka
-            // 2. prepei na ftiaksw thn methodo pou na grafei
+            try
+            {
+                DatabaseLogging.LogError(apiError);
+            }
+            catch (Exception)
+            {
+                throw;
+            }                       
         }
 
         private string HandleLogText(Exception ex)

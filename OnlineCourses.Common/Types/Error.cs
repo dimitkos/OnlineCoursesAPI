@@ -2,8 +2,9 @@
 
 namespace OnlineCourses.Common.Types
 {
-    public class ApiError
+    public class Error
     {
+        public Guid Id { get; set; }
         public string Message { get; set; }
         public string RequestMethod { get; set; }
         public string RequestUri { get; set; }

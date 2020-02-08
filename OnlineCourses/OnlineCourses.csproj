@@ -116,6 +116,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OnlineCourses.Common\OnlineCourses.Common.csproj">
+      <Project>{5F1F0526-BEBE-4B79-986D-044998D860DC}</Project>
+      <Name>OnlineCourses.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OnlineCourses.Controllers\OnlineCourses.Controllers.csproj">
       <Project>{4db048b0-e724-4e7b-bd4a-f167be3873c5}</Project>
       <Name>OnlineCourses.Controllers</Name>
