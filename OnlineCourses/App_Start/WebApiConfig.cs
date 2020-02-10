@@ -1,4 +1,5 @@
-﻿using OnlineCourses.Common.ErrorLogging;
+﻿using OnlineCourses.Common.Auditing;
+using OnlineCourses.Common.ErrorLogging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,8 @@ namespace OnlineCourses
 
             // Web API routes
             config.MapHttpAttributeRoutes();
+
+            config.MessageHandlers.Add(new AuditHandler());
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
