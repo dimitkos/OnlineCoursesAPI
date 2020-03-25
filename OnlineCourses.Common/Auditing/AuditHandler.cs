@@ -57,7 +57,7 @@ namespace OnlineCourses.Common.Auditing
                 UserHostAddress = userHostAddress,
                 Useragent = useragent,
                 RequestedMethod = requestedMethod.ToString(),
-                StatusCode = string.Empty
+                StatusCode = response.StatusCode.ToString() //string.Empty
             };
 
             OutgoingMessageAsync(responseAudit);

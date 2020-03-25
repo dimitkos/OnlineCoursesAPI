@@ -10,11 +10,13 @@ namespace OnlineCourses.Implementation.BusinessLayerImplementation
     {
         private readonly IService _dbService;
         private readonly IValidation _validation;
+        private readonly IEmailProvider _emailProvider;
 
-        public UserService(IService dbService, IValidation validation)
+        public UserService(IService dbService, IValidation validation, IEmailProvider emailProvider)
         {
             _dbService = dbService;
             _validation = validation;
+            _emailProvider = emailProvider;
         }
 
         public GetUsersResponse FetchUsers()
@@ -35,7 +37,14 @@ namespace OnlineCourses.Implementation.BusinessLayerImplementation
         {
             ValidateUserData(request.ConvertToUserData());
 
-            return _dbService.AddNewUser(request);
+            var result =_dbService.AddNewUser(request);
+
+            if(result)
+            {
+                _emailProvider.Send(request.Email, request.FullName);
+            }
+
+            return result;
         }
 
         public bool UpdateUser(UpdateUserDataRequest request)

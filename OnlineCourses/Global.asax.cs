@@ -30,6 +30,7 @@ namespace OnlineCourses
             container.Register<IInstructor, InstructorService>(Lifestyle.Scoped);
             container.Register<ICourse, CourseService>(Lifestyle.Scoped);
             container.Register<ICsv, CsvService>(Lifestyle.Scoped);
+            container.Register<IEmailProvider, EmailService>(Lifestyle.Scoped);
             container.RegisterWebApiControllers(GlobalConfiguration.Configuration);
 
             container.Verify();
