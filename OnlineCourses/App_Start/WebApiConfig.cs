@@ -1,8 +1,6 @@
 ﻿using OnlineCourses.Common.Auditing;
 using OnlineCourses.Common.ErrorLogging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using OnlineCourses.Common.TokenValidation;
 using System.Web.Http;
 using System.Web.Http.ExceptionHandling;
 
@@ -14,11 +12,11 @@ namespace OnlineCourses
         {
             config.Services.Replace(typeof(IExceptionLogger), new ApiExceptionLogging());
             // Web API configuration and services
-#warning must add authorize attribute global
-#warning must set up a handler with jwt
+
             // Web API routes
             config.MapHttpAttributeRoutes();
 
+            config.MessageHandlers.Add(new TokenValidationHandler());
             config.MessageHandlers.Add(new AuditHandler());
 
             config.Routes.MapHttpRoute(

@@ -23,7 +23,7 @@ namespace OnlineCourses.Implementation.BusinessLayerImplementation
         {
             var account = _dbService.GetUserByIdAndEmail(request);
 
-            if (account.HashedPassword == null)
+            if (account == null)
                 throw new Exception("Not existing user");
 
             var verifyPassword = _passwordProvider.VerifyHashedPassword(request.Password , account.HashedPassword);
@@ -42,8 +42,8 @@ namespace OnlineCourses.Implementation.BusinessLayerImplementation
             {
                 new Claim(ClaimTypes.Email, account.Email)
             };
-#warning add secret
-            var token = _tokenProvider.CreateToken(accessTokenClaims,DateTime.UtcNow.AddMinutes(10) , "my secret");
+
+            var token = _tokenProvider.CreateToken(accessTokenClaims,DateTime.UtcNow.AddMinutes(10) , "IxrAjDoa2FqElO7IhrSrUJELhUckePEPVpaePlS_Xaw");
 
             return token;
         }
