@@ -7,7 +7,6 @@ using System.Text;
 
 namespace OnlineCourses.Implementation.Helper
 {
-#warning must add in container
     public class TokenProvider : ITokenProvider
     {
         public string CreateToken(Claim[] claims, DateTime expires, string tokenSecret)

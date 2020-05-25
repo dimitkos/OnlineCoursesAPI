@@ -6,7 +6,6 @@ using System.Security.Claims;
 
 namespace OnlineCourses.Implementation.BusinessLayerImplementation
 {
-#warning add in container
     public class AuthenticationService : IAuthenticationManager
     {
         private readonly IService _dbService;

@@ -3,7 +3,6 @@ using System;
 
 namespace OnlineCourses.Implementation.Helper
 {
-#warning must add in container
     public class PasswordProvider : IPasswordProvider
     {
 #warning must implement the  method

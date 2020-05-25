@@ -14,7 +14,8 @@ namespace OnlineCourses
         {
             config.Services.Replace(typeof(IExceptionLogger), new ApiExceptionLogging());
             // Web API configuration and services
-
+#warning must add authorize attribute global
+#warning must set up a handler with jwt
             // Web API routes
             config.MapHttpAttributeRoutes();
 

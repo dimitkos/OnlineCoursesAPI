@@ -30,6 +30,9 @@ namespace OnlineCourses
             container.Register<IInstructor, InstructorService>(Lifestyle.Scoped);
             container.Register<ICourse, CourseService>(Lifestyle.Scoped);
             container.Register<ICsv, CsvService>(Lifestyle.Scoped);
+            container.Register<IAuthenticationManager, AuthenticationService>(Lifestyle.Scoped);
+            container.Register<ITokenProvider, TokenProvider>(Lifestyle.Scoped);
+            container.Register<IPasswordProvider, PasswordProvider>(Lifestyle.Scoped);
             container.RegisterWebApiControllers(GlobalConfiguration.Configuration);
 
             container.Verify();
