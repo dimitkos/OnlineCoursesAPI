@@ -104,7 +104,19 @@ namespace OnlineCourses.Implementation.DataBaseImplementation
         }
 
 #warning must crete the db
-#warning must implement add in db when create a user
+
+        public bool AddAccount(AddNewUserRequest request)
+        {
+            string sql = @"INSERT INTO Account (Id,Email,Password) VALUES (@Id@Email,@Password)";
+            int result;
+            var parameters = new { request.Id,request.Email, request.Password };
+            using (var con = GetSqlConnection())
+            {
+                result = con.Execute(sql, parameters);
+            }
+
+            return result == 1;
+        }
 
         public Account GetUserByIdAndEmail(LoginRequest request)
         {

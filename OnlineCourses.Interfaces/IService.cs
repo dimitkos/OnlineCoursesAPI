@@ -47,5 +47,7 @@ namespace OnlineCourses.Interfaces
         GetEnrollsByUserResponse GetEnrollsByStudent(GetEnrollsByUserRequest request);
 
         Account GetUserByIdAndEmail(LoginRequest request);
+
+        bool AddAccount(AddNewUserRequest request);
     }
 }

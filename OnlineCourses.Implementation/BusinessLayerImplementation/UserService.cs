@@ -39,9 +39,10 @@ namespace OnlineCourses.Implementation.BusinessLayerImplementation
 
             request.Password = _passwordProvider.Hash(request.Password);
 
-#warning must write in the other table in db tha passwords
+            var recordedAccount = _dbService.AddAccount(request);
+            var recordedUser = _dbService.AddNewUser(request);
 
-            return _dbService.AddNewUser(request);
+            return recordedAccount && recordedUser;
         }
 
         public bool UpdateUser(UpdateUserDataRequest request)
