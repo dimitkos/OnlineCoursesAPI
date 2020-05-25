@@ -43,11 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IAuthenticationManager.cs" />
     <Compile Include="IBasicInfo.cs" />
     <Compile Include="ICourse.cs" />
     <Compile Include="ICsv.cs" />
     <Compile Include="IInstructor.cs" />
+    <Compile Include="IPasswordProvider.cs" />
     <Compile Include="IService.cs" />
+    <Compile Include="ITokenProvider.cs" />
     <Compile Include="IUser.cs" />
     <Compile Include="IValidation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

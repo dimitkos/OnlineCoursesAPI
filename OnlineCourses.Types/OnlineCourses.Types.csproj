@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbTypes\Account.cs" />
     <Compile Include="DbTypes\Category.cs" />
     <Compile Include="DbTypes\Course.cs" />
     <Compile Include="DbTypes\EnrollCourse.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Requests\GetEnrollsByUserRequest.cs" />
     <Compile Include="Requests\GetInstructorByIdRequest.cs" />
     <Compile Include="Requests\GetUserByIdRequest.cs" />
+    <Compile Include="Requests\LoginRequest.cs" />
     <Compile Include="Requests\SearchCoursesRequest.cs" />
     <Compile Include="Requests\UpdateCourseRequest.cs" />
     <Compile Include="Requests\UpdateInstructorDataRequest.cs" />

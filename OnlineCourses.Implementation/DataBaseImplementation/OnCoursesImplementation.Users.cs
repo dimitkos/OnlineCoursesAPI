@@ -102,5 +102,22 @@ namespace OnlineCourses.Implementation.DataBaseImplementation
 
             return result == 1;
         }
+
+#warning must crete the db
+#warning must implement add in db when create a user
+
+        public Account GetUserByIdAndEmail(LoginRequest request)
+        {
+            //must create account table id,mail,pass and must return an account type
+            string sql = @"Select * From accounts Where id=@id and email=@email";
+            var parameters = new { id = request.Id, email = request.Email };
+
+            using (var con = GetSqlConnection())
+            {
+                var account = con.Query<Account>(sql, parameters).FirstOrDefault();
+
+                return account;
+            }
+        }
     }
 }

@@ -10,11 +10,13 @@ namespace OnlineCourses.Implementation.BusinessLayerImplementation
     {
         private readonly IService _dbService;
         private readonly IValidation _validation;
+        public readonly IPasswordProvider _passwordProvider;
 
-        public UserService(IService dbService, IValidation validation)
+        public UserService(IService dbService, IValidation validation, IPasswordProvider passwordProvider)
         {
             _dbService = dbService;
             _validation = validation;
+            _passwordProvider = passwordProvider;
         }
 
         public GetUsersResponse FetchUsers()
@@ -34,6 +36,10 @@ namespace OnlineCourses.Implementation.BusinessLayerImplementation
         public bool CreateNewUser(AddNewUserRequest request)
         {
             ValidateUserData(request.ConvertToUserData());
+
+            request.Password = _passwordProvider.Hash(request.Password);
+
+#warning must write in the other table in db tha passwords
 
             return _dbService.AddNewUser(request);
         }

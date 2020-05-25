@@ -1,4 +1,5 @@
-﻿using OnlineCourses.Types.Requests;
+﻿using OnlineCourses.Types.DbTypes;
+using OnlineCourses.Types.Requests;
 using OnlineCourses.Types.Responses;
 
 namespace OnlineCourses.Interfaces
@@ -44,5 +45,7 @@ namespace OnlineCourses.Interfaces
         CourseCommentsResponse GetCommentsByCourse(CourseCommentsRequest request);
 
         GetEnrollsByUserResponse GetEnrollsByStudent(GetEnrollsByUserRequest request);
+
+        Account GetUserByIdAndEmail(LoginRequest request);
     }
 }

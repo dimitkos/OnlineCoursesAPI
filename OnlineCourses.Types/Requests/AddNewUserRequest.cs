@@ -15,6 +15,9 @@ namespace OnlineCourses.Types.Requests
         [DataMember(Name = "email")]
         public string Email { get; set; }
 
+        [DataMember(Name = "password")]
+        public string Password { get; set; }
+
         [DataMember(Name = "gender")]
         public bool Gender { get; set; }
 
