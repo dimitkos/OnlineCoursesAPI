@@ -19,6 +19,8 @@ namespace OnlineCourses
             config.MessageHandlers.Add(new TokenValidationHandler());
             config.MessageHandlers.Add(new AuditHandler());
 
+            config.Filters.Add(new AuthorizeAttribute());
+
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{action}/{id}",

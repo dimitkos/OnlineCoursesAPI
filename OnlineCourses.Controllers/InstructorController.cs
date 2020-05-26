@@ -50,6 +50,7 @@ namespace OnlineCourses.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         [ActionName("createInstructorAccount")]
         [ResponseType(typeof(bool))]
         public HttpResponseMessage CreateInstructorAccount([FromBody]CreateInstructorAccountRequest request)

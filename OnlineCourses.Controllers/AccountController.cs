@@ -3,6 +3,7 @@ using OnlineCourses.Types.Requests;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Description;
 
 namespace OnlineCourses.Controllers
 {
@@ -17,6 +18,8 @@ namespace OnlineCourses.Controllers
 
         [HttpPost]
         [AllowAnonymous]
+        [ActionName("Login")]       
+        [ResponseType(typeof(bool))]
         public HttpResponseMessage Login(LoginRequest login)
         {
             var response = _authenticationManager.Authenticate(login);

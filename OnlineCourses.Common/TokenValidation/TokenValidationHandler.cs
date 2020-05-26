@@ -51,8 +51,8 @@ namespace OnlineCourses.Common.TokenValidation
                 //Replace the issuer and audience with your URL (ex. http:localhost:12345)
                 var validationParameters = new TokenValidationParameters
                 {
-                    ValidAudience = "http://localhost:51992/",
-                    ValidIssuer = "http://localhost:51992/",
+                    ValidateAudience = false,
+                    ValidateIssuer = false,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
                     LifetimeValidator = LifetimeValidator,

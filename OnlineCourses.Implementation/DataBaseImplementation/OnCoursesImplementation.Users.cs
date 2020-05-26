@@ -14,6 +14,9 @@ namespace OnlineCourses.Implementation.DataBaseImplementation
 {
     public partial class OnCoursesImplementation
     {
+#warning remove this
+        private List<Account> accountDb = new List<Account>();
+
         public GetUsersResponse GetUsers()
         {
             string sql = @"Select * From users";
@@ -103,33 +106,61 @@ namespace OnlineCourses.Implementation.DataBaseImplementation
             return result == 1;
         }
 
-#warning must crete the db
+#warning must create the db
+        //better for testing purpose to implement in memory
 
         public bool AddAccount(AddNewUserRequest request)
         {
-            string sql = @"INSERT INTO Account (Id,Email,Password) VALUES (@Id@Email,@Password)";
-            int result;
-            var parameters = new { request.Id,request.Email, request.Password };
-            using (var con = GetSqlConnection())
-            {
-                result = con.Execute(sql, parameters);
-            }
+            //var accountDb = new List<Account>();
 
-            return result == 1;
+            var account = new Account
+            {
+                Id = request.Id,
+                Email = request.Email,
+                HashedPassword = request.Password
+            };
+
+            accountDb.Add(account);
+
+            return true;
+
+            //string sql = @"INSERT INTO Account (Id,Email,Password) VALUES (@Id@Email,@Password)";
+            //int result;
+            //var parameters = new { request.Id,request.Email, request.Password };
+            //using (var con = GetSqlConnection())
+            //{
+            //    result = con.Execute(sql, parameters);
+            //}
+
+            //return result == 1;
         }
 
+#warning must change the code
         public Account GetUserByIdAndEmail(LoginRequest request)
         {
-            //must create account table id,mail,pass and must return an account type
-            string sql = @"Select * From accounts Where id=@id and email=@email";
-            var parameters = new { id = request.Id, email = request.Email };
 
-            using (var con = GetSqlConnection())
+            var accountInsert = new Account
             {
-                var account = con.Query<Account>(sql, parameters).FirstOrDefault();
+                Id = 1250,
+                Email = "test@gmail.com",
+                HashedPassword = "AMqzaDTQ7Ttmj/7Jnh0cZpa31uLddfgl7eP+IVOnlo7yjUM2oA1ytnXAZiVee0lPbQ=="
+            };
 
-                return account;
-            }
+            accountDb.Add(accountInsert);
+
+            var account = accountDb.FirstOrDefault( x => x.Id == request.Id && x.Email == request.Email);
+
+            return account;
+            //must create account table id,mail,pass and must return an account type
+            //string sql = @"Select * From accounts Where id=@id and email=@email";
+            //var parameters = new { id = request.Id, email = request.Email };
+
+            //using (var con = GetSqlConnection())
+            //{
+            //    var account = con.Query<Account>(sql, parameters).FirstOrDefault();
+
+            //    return account;
+            //}
         }
     }
 }

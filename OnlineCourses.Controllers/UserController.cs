@@ -50,6 +50,7 @@ namespace OnlineCourses.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         [ActionName("createUser")]
         [ResponseType(typeof(bool))]
         public HttpResponseMessage CreateUser([FromBody]AddNewUserRequest request)
