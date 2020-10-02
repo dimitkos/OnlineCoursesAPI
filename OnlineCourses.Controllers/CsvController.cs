@@ -6,18 +6,18 @@ namespace OnlineCourses.Controllers
 {
     public class CsvController : ApiController
     {
-        private readonly ICsv service;
+        private readonly ICsv _service;
 
         public CsvController(ICsv service)
         {
-            this.service = service;
+            _service = service;
         }
 
         [HttpGet]
         [ActionName("getCsvUsers")]
         public HttpResponseMessage GetCsvUsers()
         {
-            var response = service.GetUsersCsv();
+            var response = _service.GetUsersCsv();
 
             return response;
         }
@@ -26,7 +26,7 @@ namespace OnlineCourses.Controllers
         [ActionName("getCsvInstructors")]
         public HttpResponseMessage GetCsvInstructors()
         {
-            var response = service.GetInctructorsCsv();
+            var response = _service.GetInctructorsCsv();
 
             return response;
         }
@@ -35,7 +35,7 @@ namespace OnlineCourses.Controllers
         [ActionName("getCsvCourses")]
         public HttpResponseMessage GetCsvCourses()
         {
-            var response = service.GetCoursesCsv();
+            var response = _service.GetCoursesCsv();
 
             return response;
         }

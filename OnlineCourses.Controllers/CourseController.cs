@@ -11,11 +11,11 @@ namespace OnlineCourses.Controllers
 {
     public class CourseController : ApiController
     {
-        private readonly ICourse course;
+        private readonly ICourse _service;
 
         public CourseController(ICourse course)
         {
-            this.course = course;
+            _service = course;
         }
 
         [HttpGet]
@@ -23,7 +23,7 @@ namespace OnlineCourses.Controllers
         [ResponseType(typeof(GetCoursesResponse))]
         public HttpResponseMessage GetAllCourses()
         {
-            var response = course.FetchAllCourses();
+            var response = _service.FetchAllCourses();
             if (response.Courses != null)
             {
                 return Request.CreateResponse<GetCoursesResponse>(HttpStatusCode.OK, response);
@@ -39,7 +39,7 @@ namespace OnlineCourses.Controllers
         [ResponseType(typeof(bool))]
         public HttpResponseMessage AddNewCourse([FromBody] AddNewCourseRequest request)
         {
-            var response = course.AddCourse(request);
+            var response = _service.AddCourse(request);
             if (response)
             {
                 return Request.CreateResponse<bool>(HttpStatusCode.OK, response);
@@ -55,7 +55,7 @@ namespace OnlineCourses.Controllers
         [ResponseType(typeof(bool))]
         public HttpResponseMessage UpdateCourse([FromBody] UpdateCourseRequest request)
         {
-            var response = course.UpdateCourse(request);
+            var response = _service.UpdateCourse(request);
             if (response)
             {
                 return Request.CreateResponse<bool>(HttpStatusCode.OK, response);
@@ -69,15 +69,15 @@ namespace OnlineCourses.Controllers
         [HttpGet]
         [ActionName("searchCourses")]
         [ResponseType(typeof(GetCoursesResponse))]
-        public HttpResponseMessage SearchCourses([FromBody]SearchCoursesRequest request)
+        public HttpResponseMessage SearchCourses([FromBody] SearchCoursesRequest request)
         {
-            var response = course.SearchCourses(request);
+            var response = _service.SearchCourses(request);
 
-            if (response.Courses.ToList().Count > 0 )
+            if (response.Courses.ToList().Count > 0)
             {
                 return Request.CreateResponse<GetCoursesResponse>(HttpStatusCode.OK, response);
             }
-            else if(response.Courses.ToList().Count == 0)
+            else if (response.Courses.ToList().Count == 0)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.NoContent, "No courses found");
             }
@@ -90,9 +90,9 @@ namespace OnlineCourses.Controllers
         [HttpGet]
         [ActionName("getCoursesByInstructor")]
         [ResponseType(typeof(GetCoursesByInstructorResponse))]
-        public HttpResponseMessage GetCoursesByInstructor([FromBody]GetCoursesByInstructorRequest request)
+        public HttpResponseMessage GetCoursesByInstructor([FromBody] GetCoursesByInstructorRequest request)
         {
-            var response = course.FetchCoursesByInstructor(request);
+            var response = _service.FetchCoursesByInstructor(request);
             if (response.Instructor != null && response.Courses != null)
             {
                 return Request.CreateResponse<GetCoursesByInstructorResponse>(HttpStatusCode.OK, response);
@@ -112,7 +112,7 @@ namespace OnlineCourses.Controllers
         [ResponseType(typeof(bool))]
         public HttpResponseMessage EnrollCourse([FromBody] EnrollCourseRequest request)
         {
-            var response = course.EnrollCourse(request);
+            var response = _service.EnrollCourse(request);
             if (response)
             {
                 return Request.CreateResponse<bool>(HttpStatusCode.OK, response);
@@ -128,7 +128,7 @@ namespace OnlineCourses.Controllers
         [ResponseType(typeof(bool))]
         public HttpResponseMessage AddComment([FromBody] AddCommentRequest request)
         {
-            var response = course.Comment(request);
+            var response = _service.Comment(request);
             if (response)
             {
                 return Request.CreateResponse<bool>(HttpStatusCode.OK, response);
@@ -142,9 +142,9 @@ namespace OnlineCourses.Controllers
         [HttpGet]
         [ActionName("getComments")]
         [ResponseType(typeof(CourseCommentsResponse))]
-        public HttpResponseMessage GetComments([FromBody]CourseCommentsRequest request)
+        public HttpResponseMessage GetComments([FromBody] CourseCommentsRequest request)
         {
-            var response = course.FetchCommentsByCourse(request);
+            var response = _service.FetchCommentsByCourse(request);
             if (response.CommentDetails != null)
             {
                 return Request.CreateResponse<CourseCommentsResponse>(HttpStatusCode.OK, response);
@@ -158,9 +158,9 @@ namespace OnlineCourses.Controllers
         [HttpGet]
         [ActionName("getCoursesByUser")]
         [ResponseType(typeof(GetEnrollsByUserResponse))]
-        public HttpResponseMessage GetCoursesByUser([FromBody]GetEnrollsByUserRequest request)
+        public HttpResponseMessage GetCoursesByUser([FromBody] GetEnrollsByUserRequest request)
         {
-            var response = course.FetchEnrollsByStudent(request);
+            var response = _service.FetchEnrollsByStudent(request);
             if (response.Courses != null && response.User != null)
             {
                 return Request.CreateResponse<GetEnrollsByUserResponse>(HttpStatusCode.OK, response);

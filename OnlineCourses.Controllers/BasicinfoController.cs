@@ -9,12 +9,11 @@ namespace OnlineCourses.Controllers
 {
     public class BasicinfoController : ApiController
     {
-        
-        private readonly IBasicInfo service;
+        private readonly IBasicInfo _service;
 
         public BasicinfoController(IBasicInfo service)
         {
-            this.service = service;
+            _service = service;
         }
 
         [HttpGet]
@@ -22,7 +21,7 @@ namespace OnlineCourses.Controllers
         [ResponseType(typeof(GetFrameworksResponse))]
         public HttpResponseMessage GetFrameworks()
         {
-            var response = service.FetchFrameworks();
+            var response = _service.FetchFrameworks();
             if (response.Frameworks != null)
             {
                 return Request.CreateResponse<GetFrameworksResponse>(HttpStatusCode.OK, response);
@@ -38,7 +37,7 @@ namespace OnlineCourses.Controllers
         [ResponseType(typeof(GetCategoriesResponse))]
         public HttpResponseMessage GetCategories()
         {
-            var response = service.FetchCategories();
+            var response = _service.FetchCategories();
             if (response.Categories != null)
             {
                 return Request.CreateResponse<GetCategoriesResponse>(HttpStatusCode.OK, response);
