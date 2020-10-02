@@ -1,0 +1,1231 @@
+{
+	"info": {
+		"_postman_id": "7b0afd8f-0461-4a3e-994c-ddb345beb9f5",
+		"name": "OnlineCourses",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "BadRequests",
+			"item": [
+				{
+					"name": "User Bad Requests",
+					"item": [
+						{
+							"name": "Bad Request getUserById",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"userId\": -1\n}"
+								},
+								"url": {
+									"raw": "http://localhost:51992/api/user/getUserById",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"user",
+										"getUserById"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Id Bad request createUser",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\":-1,\n\t\"fullName\":\"Nikos Nikou\",\n\t\"email\":\"nikou@gmail.com\",\n\t\"gender\":true,\n\t\"job\":\"It\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:51992/api/user/createUser",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"user",
+										"createUser"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Full name Bad Request createUser",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\":1,\n\t\"fullName\":\"NikosdffgfgghhhgghjjjjhjjhhjjhjjhjhhjhjhjhhjjjhjhjhjhjhkhkNikoufgghhghggh\",\n\t\"email\":\"nikou@gmail.com\",\n\t\"gender\":true,\n\t\"job\":\"It\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:51992/api/user/createUser",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"user",
+										"createUser"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Bad request Email createUser",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\":1,\n\t\"fullName\":\"Dimitris Jim\",\n\t\"email\":\"nikou@gmail&net.com\",\n\t\"gender\":true,\n\t\"job\":\"It\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:51992/api/user/createUser",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"user",
+										"createUser"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Bad Request Job createUser",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\":1,\n\t\"fullName\":\"Dimitris Jim\",\n\t\"email\":\"nikou@gmail&net.com\",\n\t\"gender\":true,\n\t\"job\":\"fghhghgghhgfjjfjhghkkhgkgkkjkjjkjjhlhlhllhrtdhdhhjfhghkkgkkkjjlljlklklklklk\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:51992/api/user/createUser",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"user",
+										"createUser"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Instructor Bad Requests",
+					"item": [
+						{
+							"name": "getInstructorById Bad Request",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"instructorId\":-2\n}"
+								},
+								"url": {
+									"raw": "http://localhost:51992/api/instructor/getInstructorById",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"instructor",
+										"getInstructorById"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Course Bad Request",
+					"item": [
+						{
+							"name": "Bad request addNewCourse with invalid  price",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\":8,\n\t\"title\":\"Data structures\",\n\t\"description\":\"Learn data structures and algorithms\",\n\t\"rating\":4,\n\t\"price\":123455669,\n\t\"categoryId\":\"SW\",\n\t\"frameworkId\":\"NET\",\n\t\"instructorId\":2\n}"
+								},
+								"url": {
+									"raw": "http://localhost:51992/api/course/addNewCourse",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"course",
+										"addNewCourse"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": " Bad request addNewCourse with invalid rating",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\":8,\n\t\"title\":\"Data structures\",\n\t\"description\":\"Learn data structures and algorithms\",\n\t\"rating\":-4,\n\t\"price\":9,\n\t\"categoryId\":\"SW\",\n\t\"frameworkId\":\"NET\",\n\t\"instructorId\":2\n}"
+								},
+								"url": {
+									"raw": "http://localhost:51992/api/course/addNewCourse",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"course",
+										"addNewCourse"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Bad request updateCourse with invalid title",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\":444,\n\t\"title\":\"Python and Machine Learning etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc etc\",\n\t\"description\":\"A basic course with most famous machine learning libraries in Python\",\n\t\"price\":18\n}"
+								},
+								"url": {
+									"raw": "http://localhost:51992/api/course/updateCourse",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"course",
+										"updateCourse"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "UserController",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:51992/api/user/getAllUsers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "51992",
+							"path": [
+								"api",
+								"user",
+								"getAllUsers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserById",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:51992/api/user/getUserById?userId=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "51992",
+							"path": [
+								"api",
+								"user",
+								"getUserById"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Get user with specific Id"
+					},
+					"response": []
+				},
+				{
+					"name": "createUser",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\":100,\n\t\"fullName\":\"Nikos Nikou\",\n\t\"email\":\"nikou@gmail.com\",\n\t\"gender\":true,\n\t\"job\":\"It\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:51992/api/user/createUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "51992",
+							"path": [
+								"api",
+								"user",
+								"createUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateUserData",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\":100,\n\t\"fullName\":\"Nikolaos Nikou\",\n\t\"email\":\"nikou@gmail.com\",\n\t\"job\":\"IT\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:51992/api/user/updateUserData",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "51992",
+							"path": [
+								"api",
+								"user",
+								"updateUserData"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUserAccount",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\":100\n}"
+						},
+						"url": {
+							"raw": "http://localhost:51992/api/user/deleteUserAccount",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "51992",
+							"path": [
+								"api",
+								"user",
+								"deleteUserAccount"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "BasicInfoController",
+			"item": [
+				{
+					"name": "getFrameworks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:51992/api/basicinfo/getFrameworks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "51992",
+							"path": [
+								"api",
+								"basicinfo",
+								"getFrameworks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCategories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:51992/api/basicinfo/getCategories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "51992",
+							"path": [
+								"api",
+								"basicinfo",
+								"getCategories"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "InstructorController",
+			"item": [
+				{
+					"name": "getInstructorById",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:51992/api/instructor/getInstructorById?instructorId=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "51992",
+							"path": [
+								"api",
+								"instructor",
+								"getInstructorById"
+							],
+							"query": [
+								{
+									"key": "instructorId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getInstructors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:51992/api/instructor/getInstructors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "51992",
+							"path": [
+								"api",
+								"instructor",
+								"getInstructors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createInstructorAccount",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\":14,\n\t\"fullName\":\"Andres Riola\",\n\t\"email\":\"anriola@imperial.co.uk\",\n\t\"bio\":\"Phd in Software Enginnering\",\n\t\"language\":\"C++\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:51992/api/instructor/createInstructorAccount",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "51992",
+							"path": [
+								"api",
+								"instructor",
+								"createInstructorAccount"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateInstructorData",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\":14,\n\t\"fullName\":\"Andres Riolan\",\n\t\"email\":\"anriola@imperial.org\",\n\t\"bio\":\"Phd in Software Enginnering\",\n\t\"language\":\"C++\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:51992/api/instructor/updateInstructorData",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "51992",
+							"path": [
+								"api",
+								"instructor",
+								"updateInstructorData"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CourseController",
+			"item": [
+				{
+					"name": "getCourses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:51992/api/course/getCourses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "51992",
+							"path": [
+								"api",
+								"course",
+								"getCourses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addNewCourse",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\":11,\n\t\"title\":\"Sql Server and Azure\",\n\t\"description\":\"Manipulate Data with sql server and Azure Cloud\",\n\t\"rating\":4.7,\n\t\"price\":12,\n\t\"categoryId\":\"DB\",\n\t\"frameworkId\":\"NET\",\n\t\"instructorId\":2\n}"
+						},
+						"url": {
+							"raw": "http://localhost:51992/api/course/addNewCourse",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "51992",
+							"path": [
+								"api",
+								"course",
+								"addNewCourse"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateCourse",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\":44444,\n\t\"title\":\"Python and Machine Learning\",\n\t\"description\":\"A basic course with most famous machine learning libraries in Python\",\n\t\"price\":18\n}"
+						},
+						"url": {
+							"raw": "http://localhost:51992/api/course/updateCourse",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "51992",
+							"path": [
+								"api",
+								"course",
+								"updateCourse"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "searchCourses by title",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"ch\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:51992/api/course/searchCourses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "51992",
+							"path": [
+								"api",
+								"course",
+								"searchCourses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "searchCourses by frameworkname",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": null,\n\t\"frameworkName\" : \".NET\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:51992/api/course/searchCourses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "51992",
+							"path": [
+								"api",
+								"course",
+								"searchCourses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "searchCourses by category name",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": null,\n\t\"frameworkName\" : null,\n\t\"categoryName\" : \"Software Development\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:51992/api/course/searchCourses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "51992",
+							"path": [
+								"api",
+								"course",
+								"searchCourses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "searchCourses by instructor name",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": null,\n\t\"frameworkName\" : null,\n\t\"categoryName\" : null,\n\t\"instructorName\" : \"Marc James\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:51992/api/course/searchCourses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "51992",
+							"path": [
+								"api",
+								"course",
+								"searchCourses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "searchCourses by price",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": null,\n\t\"frameworkName\" : null,\n\t\"categoryName\" : null,\n\t\"instructorName\" : null,\n\t\"upPrice\" : 25.0 ,\n    \"downPrice\" : 12.0\n}"
+						},
+						"url": {
+							"raw": "http://localhost:51992/api/course/searchCourses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "51992",
+							"path": [
+								"api",
+								"course",
+								"searchCourses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "searchCourses by rating",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": null,\n\t\"frameworkName\" : null,\n\t\"categoryName\" : null,\n\t\"instructorName\" : null,\n\t\"upPrice\" : null ,\n    \"downPrice\" : null,\n    \"upRating\" : 5.0,\n    \"downRating\" : 4.6\n}"
+						},
+						"url": {
+							"raw": "http://localhost:51992/api/course/searchCourses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "51992",
+							"path": [
+								"api",
+								"course",
+								"searchCourses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "enrollCourse",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userId\":1,\n\t\"courseId\":2\n}"
+						},
+						"url": {
+							"raw": "http://localhost:51992/api/course/enrollCourse",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "51992",
+							"path": [
+								"api",
+								"course",
+								"enrollCourse"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCoursesByInstructor",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"instructorId\":2\n}"
+						},
+						"url": {
+							"raw": "http://localhost:51992/api/course/getCoursesByInstructor",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "51992",
+							"path": [
+								"api",
+								"course",
+								"getCoursesByInstructor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addComment",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userId\":1,\n\t\"courseId\":2,\n\t\"comment\":\"The course is a litle bit outdated.\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:51992/api/course/addComment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "51992",
+							"path": [
+								"api",
+								"course",
+								"addComment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getComments",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"courseId\":1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:51992/api/course/getComments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "51992",
+							"path": [
+								"api",
+								"course",
+								"getComments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCoursesByUser",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userId\":1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:51992/api/course/getCoursesByUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "51992",
+							"path": [
+								"api",
+								"course",
+								"getCoursesByUser"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CsvController",
+			"item": [
+				{
+					"name": "getCsvUsers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:51992/api/csv/getCsvUsers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "51992",
+							"path": [
+								"api",
+								"csv",
+								"getCsvUsers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCsvInstructors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:51992/api/csv/getCsvInstructors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "51992",
+							"path": [
+								"api",
+								"csv",
+								"getCsvInstructors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCsvCourses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:51992/api/csv/getCsvCourses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "51992",
+							"path": [
+								"api",
+								"csv",
+								"getCsvCourses"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
