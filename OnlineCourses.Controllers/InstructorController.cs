@@ -10,11 +10,11 @@ namespace OnlineCourses.Controllers
 {
     public class InstructorController : ApiController
     {
-        private readonly IInstructor service;
+        private readonly IInstructor _service;
 
         public InstructorController(IInstructor service)
         {
-            this.service = service;
+            _service = service;
         }
 
         [HttpGet]
@@ -22,7 +22,7 @@ namespace OnlineCourses.Controllers
         [ResponseType(typeof(GetInstructorsResponse))]
         public HttpResponseMessage GetInstructors()
         {
-            var response = service.FetchInstructors();
+            var response = _service.FetchInstructors();
             if (response != null)
             {
                 return Request.CreateResponse<GetInstructorsResponse>(HttpStatusCode.OK, response);
@@ -36,9 +36,9 @@ namespace OnlineCourses.Controllers
         [HttpGet]
         [ActionName("getInstructorById")]
         [ResponseType(typeof(GetInstructorByIdResponse))]
-        public HttpResponseMessage GetInstructorById([FromUri]GetInstructorByIdRequest request)
+        public HttpResponseMessage GetInstructorById([FromUri] GetInstructorByIdRequest request)
         {
-            var response = service.FetchInstructorById(request);
+            var response = _service.FetchInstructorById(request);
             if (response.Instructor != null)
             {
                 return Request.CreateResponse<GetInstructorByIdResponse>(HttpStatusCode.OK, response);
@@ -52,9 +52,9 @@ namespace OnlineCourses.Controllers
         [HttpPost]
         [ActionName("createInstructorAccount")]
         [ResponseType(typeof(bool))]
-        public HttpResponseMessage CreateInstructorAccount([FromBody]CreateInstructorAccountRequest request)
+        public HttpResponseMessage CreateInstructorAccount([FromBody] CreateInstructorAccountRequest request)
         {
-            var response = service.CreateNewInstructor(request);
+            var response = _service.CreateNewInstructor(request);
 
             if (response)
             {
@@ -69,9 +69,9 @@ namespace OnlineCourses.Controllers
         [HttpPut]
         [ActionName("updateInstructorData")]
         [ResponseType(typeof(bool))]
-        public HttpResponseMessage UpdateInstructorData([FromBody]UpdateInstructorDataRequest request)
+        public HttpResponseMessage UpdateInstructorData([FromBody] UpdateInstructorDataRequest request)
         {
-            var response = service.UpdateInstructor(request);
+            var response = _service.UpdateInstructor(request);
             if (response)
             {
                 return Request.CreateResponse<bool>(HttpStatusCode.OK, response);
@@ -80,7 +80,6 @@ namespace OnlineCourses.Controllers
             {
                 return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Failed to update instructor data");
             }
-
         }
     }
 }

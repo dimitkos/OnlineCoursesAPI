@@ -1,5 +1,4 @@
-﻿using System;
-using OnlineCourses.Implementation.Helper;
+﻿using OnlineCourses.Implementation.Helper;
 using OnlineCourses.Interfaces;
 using OnlineCourses.Types.Requests;
 using OnlineCourses.Types.Responses;
@@ -118,8 +117,6 @@ namespace OnlineCourses.Implementation.BusinessLayerImplementation
             _validation.NotValidId(request.UserId, $"{nameof(request.UserId)}");
 
             _validation.NotValidId(request.CourseId, $"{nameof(request.CourseId)}");
-
-            _validation.NotValidField(request.Comment, 500, $"{nameof(request.Comment)}");
         }
         #endregion
     }
