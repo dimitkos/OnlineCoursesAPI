@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Description;
 
 namespace OnlineCourses.Controllers
 {
@@ -19,6 +20,7 @@ namespace OnlineCourses.Controllers
 
         [HttpGet]
         [ActionName("getCourses")]
+        [ResponseType(typeof(GetCoursesResponse))]
         public HttpResponseMessage GetAllCourses()
         {
             var response = course.FetchAllCourses();
@@ -34,6 +36,7 @@ namespace OnlineCourses.Controllers
 
         [HttpPost]
         [ActionName("addNewCourse")]
+        [ResponseType(typeof(bool))]
         public HttpResponseMessage AddNewCourse([FromBody] AddNewCourseRequest request)
         {
             var response = course.AddCourse(request);
@@ -49,6 +52,7 @@ namespace OnlineCourses.Controllers
 
         [HttpPut]
         [ActionName("updateCourse")]
+        [ResponseType(typeof(bool))]
         public HttpResponseMessage UpdateCourse([FromBody] UpdateCourseRequest request)
         {
             var response = course.UpdateCourse(request);
@@ -64,6 +68,7 @@ namespace OnlineCourses.Controllers
 
         [HttpGet]
         [ActionName("searchCourses")]
+        [ResponseType(typeof(GetCoursesResponse))]
         public HttpResponseMessage SearchCourses([FromBody]SearchCoursesRequest request)
         {
             var response = course.SearchCourses(request);
@@ -84,6 +89,7 @@ namespace OnlineCourses.Controllers
 
         [HttpGet]
         [ActionName("getCoursesByInstructor")]
+        [ResponseType(typeof(GetCoursesByInstructorResponse))]
         public HttpResponseMessage GetCoursesByInstructor([FromBody]GetCoursesByInstructorRequest request)
         {
             var response = course.FetchCoursesByInstructor(request);
@@ -103,6 +109,7 @@ namespace OnlineCourses.Controllers
 
         [HttpPost]
         [ActionName("enrollCourse")]
+        [ResponseType(typeof(bool))]
         public HttpResponseMessage EnrollCourse([FromBody] EnrollCourseRequest request)
         {
             var response = course.EnrollCourse(request);
@@ -118,6 +125,7 @@ namespace OnlineCourses.Controllers
 
         [HttpPut]
         [ActionName("addComment")]
+        [ResponseType(typeof(bool))]
         public HttpResponseMessage AddComment([FromBody] AddCommentRequest request)
         {
             var response = course.Comment(request);
@@ -133,6 +141,7 @@ namespace OnlineCourses.Controllers
 
         [HttpGet]
         [ActionName("getComments")]
+        [ResponseType(typeof(CourseCommentsResponse))]
         public HttpResponseMessage GetComments([FromBody]CourseCommentsRequest request)
         {
             var response = course.FetchCommentsByCourse(request);
@@ -148,6 +157,7 @@ namespace OnlineCourses.Controllers
 
         [HttpGet]
         [ActionName("getCoursesByUser")]
+        [ResponseType(typeof(GetEnrollsByUserResponse))]
         public HttpResponseMessage GetCoursesByUser([FromBody]GetEnrollsByUserRequest request)
         {
             var response = course.FetchEnrollsByStudent(request);
